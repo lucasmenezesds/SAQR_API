@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  delivery_truck: one
+  picking_time: one
+  load_time: one
+  transportation_time: one
+  receive_time: one
+  storage_time: one
+  delivery_date: 2018-02-26 00:48:12
+
+two:
+  delivery_truck: two
+  picking_time: two
+  load_time: two
+  transportation_time: two
+  receive_time: two
+  storage_time: two
+  delivery_date: 2018-02-26 00:48:12

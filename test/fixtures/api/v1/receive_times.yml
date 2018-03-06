@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  duration_time: 1
+  event: false
+  received_date: 2018-02-26 00:48:08
+
+two:
+  duration_time: 1
+  event: false
+  received_date: 2018-02-26 00:48:08
