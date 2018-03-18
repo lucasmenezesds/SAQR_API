@@ -19,6 +19,9 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+gem 'devise_token_auth', '~> 0.1.42'
+gem 'omniauth', '~> 1.8', '>= 1.8.1'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -26,6 +29,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'rack-cors'
 
 group :development, :test do
+  # Use Pry as your rails console
+  gem 'pry-rails', '~> 0.3.6'
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
