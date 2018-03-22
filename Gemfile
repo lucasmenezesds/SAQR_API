@@ -25,6 +25,12 @@ gem 'jbuilder', '~> 2.5'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
 
+# JSON API(jsonapi.org) serializer that works with rails and can be used to serialize any kind of ruby objects
+gem 'fast_jsonapi', '~> 1.1', '>= 1.1.1'
+
+# A plugin for versioning Rails based RESTful APIs.
+gem 'versionist', '~> 1.7'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
