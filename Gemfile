@@ -13,7 +13,7 @@ gem 'pg', '~> 0.18'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.5'
+# gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -25,8 +25,8 @@ gem 'jbuilder', '~> 2.5'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
 
-# JSON API(jsonapi.org) serializer that works with rails and can be used to serialize any kind of ruby objects
-gem 'fast_jsonapi', '~> 1.1', '>= 1.1.1'
+# ActiveModel::Serializers allows you to generate your JSON in an object-oriented and convention-driven manner.
+gem 'active_model_serializers', '~> 0.10.7'
 
 # A plugin for versioning Rails based RESTful APIs.
 gem 'versionist', '~> 1.7'
@@ -44,6 +44,8 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 4.8', '>= 4.8.2'
   # A library for generating fake data such as names, addresses, and phone numbers.
   gem 'faker', '~> 1.8', '>= 1.8.7'
+
+  gem 'pry-rails', '~> 0.3.6'
 end
 
 group :development do
