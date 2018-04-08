@@ -39,6 +39,7 @@ class TransportationTimesController < ApplicationController
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_transportation_time
     @transportation_time = TransportationTime.find(params[:id])
@@ -46,10 +47,7 @@ class TransportationTimesController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def transportation_time_params
-    params.require(:transportation_time).permit(:duration_time,
-                                                :event,
-                                                :transportation_date,
-                                                :origin_city,
-                                                :destination_city)
+    ActiveModelSerializers::Deserialization.jsonapi_parse(params,
+                                                          only: [:duration_time, :event, :transportation_date, :origin_city, :destination_city])
   end
 end

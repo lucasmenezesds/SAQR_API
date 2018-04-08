@@ -39,13 +39,13 @@ class TrucksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_truck
-      @truck = Truck.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_truck
+    @truck = Truck.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def truck_params
-      params.require(:truck).permit(:driver, :model)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def truck_params
+    ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: [:driver, :model])
+  end
 end

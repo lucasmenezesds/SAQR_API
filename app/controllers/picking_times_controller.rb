@@ -39,13 +39,13 @@ class PickingTimesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_picking_time
-      @picking_time = PickingTime.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_picking_time
+    @picking_time = PickingTime.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def picking_time_params
-      params.require(:picking_time).permit(:duration_time, :start_time, :number_of_items, :number_of_items_type, :picking_date)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def picking_time_params
+    ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: [:duration_time, :start_time, :number_of_items, :number_of_items_type, :picking_date])
+  end
 end

@@ -39,13 +39,13 @@ class StorageTimesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_storage_time
-      @storage_time = StorageTime.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_storage_time
+    @storage_time = StorageTime.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def storage_time_params
-      params.require(:storage_time).permit(:duration_time, :event, :storage_date)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def storage_time_params
+    ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: [:duration_time, :event, :start_time, :storage_date])
+  end
 end

@@ -39,13 +39,13 @@ class LoadTimesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_load_time
-      @load_time = LoadTime.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_load_time
+    @load_time = LoadTime.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def load_time_params
-      params.require(:load_time).permit(:duration_time, :event, :load_date)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def load_time_params
+    ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: [:duration_time, :event, :start_time, :load_date])
+  end
 end

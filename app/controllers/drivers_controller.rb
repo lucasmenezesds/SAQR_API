@@ -39,13 +39,13 @@ class DriversController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_driver
-      @driver = Driver.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_driver
+    @driver = Driver.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def driver_params
-      params.require(:driver).permit(:name, :age, :contact)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def driver_params
+    ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: [:name, :age, :contact])
+  end
 end

@@ -39,13 +39,13 @@ class ReceiveTimesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_receive_time
-      @receive_time = ReceiveTime.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_receive_time
+    @receive_time = ReceiveTime.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def receive_time_params
-      params.require(:receive_time).permit(:duration_time, :event, :received_date)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def receive_time_params
+    ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: [:duration_time, :start_time, :event, :received_date])
+  end
 end

@@ -39,13 +39,14 @@ class CargosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_cargo
-      @cargo = Cargo.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def cargo_params
-      params.require(:cargo).permit(:truck, :delivery)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_cargo
+    @cargo = Cargo.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def cargo_params
+    ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: [:truck, :delivery])
+  end
 end

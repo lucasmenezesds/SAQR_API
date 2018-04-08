@@ -39,13 +39,13 @@ class DeliveriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_delivery
-      @delivery = Delivery.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_delivery
+    @delivery = Delivery.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def delivery_params
-      params.require(:delivery).permit(:picking_time, :load_time, :transportation_time, :receive_time, :storage_time, :delivery_date)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def delivery_params
+    ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: [:picking_time, :load_time, :transportation_time, :receive_time, :storage_time, :delivery_date])
+  end
 end

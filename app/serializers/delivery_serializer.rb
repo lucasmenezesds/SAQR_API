@@ -1,3 +1,10 @@
 class DeliverySerializer < ActiveModel::Serializer
-  attributes :id, :picking_time, :load_time, :transportation_time, :receive_time, :storage_time, :delivery_date
+  attributes :id, :delivery_date
+
+  belongs_to :picking_time
+  belongs_to :load_time
+  belongs_to :transportation_time
+  belongs_to :receive_time
+  belongs_to :storage_time
+  has_many :cargos
 end

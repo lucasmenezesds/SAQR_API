@@ -39,13 +39,13 @@ class CitiesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_city
-      @city = City.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_city
+    @city = City.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def city_params
-      params.require(:city).permit(:name, :state, :country)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def city_params
+    ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: [:name, :state, :country])
+  end
 end
