@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20180403193943) do
     t.datetime "received_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.time "start_time"
   end
 
   create_table "storage_times", force: :cascade do |t|
