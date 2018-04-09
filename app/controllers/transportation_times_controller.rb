@@ -1,5 +1,5 @@
 class TransportationTimesController < ApplicationController
-  before_action :set_transportation_time, only: [:show, :update, :destroy]
+  before_action :set_transportation_time, only: %i[show update destroy]
 
   # GET /transportation_times
   def index
@@ -10,7 +10,7 @@ class TransportationTimesController < ApplicationController
 
   # GET /transportation_times/1
   def show
-    render json: @transportation_time
+    render json: @transportation_time, include: %i[delivery destination_city origin_city]
   end
 
   # POST /transportation_times
@@ -48,6 +48,6 @@ class TransportationTimesController < ApplicationController
   # Only allow a trusted parameter "white list" through.
   def transportation_time_params
     ActiveModelSerializers::Deserialization.jsonapi_parse(params,
-                                                          only: [:duration_time, :event, :transportation_date, :origin_city, :destination_city])
+                                                          only: %i[duration_time event transportation_date origin_city destination_city])
   end
 end

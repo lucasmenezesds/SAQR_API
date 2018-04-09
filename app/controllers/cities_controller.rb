@@ -1,5 +1,5 @@
 class CitiesController < ApplicationController
-  before_action :set_city, only: [:show, :update, :destroy]
+  before_action :set_city, only: %i[show update destroy]
 
   # GET /cities
   def index
@@ -46,6 +46,6 @@ class CitiesController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def city_params
-    ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: [:name, :state, :country])
+    ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: %i[name state country])
   end
 end

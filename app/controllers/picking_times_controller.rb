@@ -1,5 +1,5 @@
 class PickingTimesController < ApplicationController
-  before_action :set_picking_time, only: [:show, :update, :destroy]
+  before_action :set_picking_time, only: %i[show update destroy]
 
   # GET /picking_times
   def index
@@ -10,7 +10,7 @@ class PickingTimesController < ApplicationController
 
   # GET /picking_times/1
   def show
-    render json: @picking_time
+    render json: @picking_time, include: [:delivery]
   end
 
   # POST /picking_times
@@ -46,6 +46,6 @@ class PickingTimesController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def picking_time_params
-    ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: [:duration_time, :start_time, :number_of_items, :number_of_items_type, :picking_date])
+    ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: %i[duration_time start_time number_of_items number_of_items_type picking_date])
   end
 end

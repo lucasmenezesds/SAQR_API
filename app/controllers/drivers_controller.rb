@@ -1,5 +1,5 @@
 class DriversController < ApplicationController
-  before_action :set_driver, only: [:show, :update, :destroy]
+  before_action :set_driver, only: %i[show update destroy]
 
   # GET /drivers
   def index
@@ -10,7 +10,7 @@ class DriversController < ApplicationController
 
   # GET /drivers/1
   def show
-    render json: @driver
+    render json: @driver, include: [:truck]
   end
 
   # POST /drivers
@@ -46,6 +46,6 @@ class DriversController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def driver_params
-    ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: [:name, :age, :contact])
+    ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: %i[name age contact])
   end
 end

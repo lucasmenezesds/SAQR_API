@@ -1,5 +1,5 @@
 class LoadTimesController < ApplicationController
-  before_action :set_load_time, only: [:show, :update, :destroy]
+  before_action :set_load_time, only: %i[show update destroy]
 
   # GET /load_times
   def index
@@ -10,7 +10,7 @@ class LoadTimesController < ApplicationController
 
   # GET /load_times/1
   def show
-    render json: @load_time
+    render json: @load_time, include: [:delivery]
   end
 
   # POST /load_times
@@ -46,6 +46,6 @@ class LoadTimesController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def load_time_params
-    ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: [:duration_time, :event, :start_time, :load_date])
+    ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: %i[duration_time event start_time load_date])
   end
 end

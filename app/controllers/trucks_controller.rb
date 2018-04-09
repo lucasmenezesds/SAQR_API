@@ -1,5 +1,5 @@
 class TrucksController < ApplicationController
-  before_action :set_truck, only: [:show, :update, :destroy]
+  before_action :set_truck, only: %i[show update destroy]
 
   # GET /trucks
   def index
@@ -46,6 +46,6 @@ class TrucksController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def truck_params
-    ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: [:driver, :model])
+    ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: %i[driver model])
   end
 end

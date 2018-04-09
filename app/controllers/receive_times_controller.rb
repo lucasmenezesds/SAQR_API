@@ -1,5 +1,5 @@
 class ReceiveTimesController < ApplicationController
-  before_action :set_receive_time, only: [:show, :update, :destroy]
+  before_action :set_receive_time, only: %i[show update destroy]
 
   # GET /receive_times
   def index
@@ -10,7 +10,7 @@ class ReceiveTimesController < ApplicationController
 
   # GET /receive_times/1
   def show
-    render json: @receive_time
+    render json: @receive_time, include: [:delivery]
   end
 
   # POST /receive_times
@@ -46,6 +46,6 @@ class ReceiveTimesController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def receive_time_params
-    ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: [:duration_time, :start_time, :event, :received_date])
+    ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: %i[duration_time start_time event received_date])
   end
 end

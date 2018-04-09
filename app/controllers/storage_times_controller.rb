@@ -1,5 +1,5 @@
 class StorageTimesController < ApplicationController
-  before_action :set_storage_time, only: [:show, :update, :destroy]
+  before_action :set_storage_time, only: %i[show update destroy]
 
   # GET /storage_times
   def index
@@ -10,7 +10,7 @@ class StorageTimesController < ApplicationController
 
   # GET /storage_times/1
   def show
-    render json: @storage_time
+    render json: @storage_time, include: [:delivery]
   end
 
   # POST /storage_times
@@ -46,6 +46,6 @@ class StorageTimesController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def storage_time_params
-    ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: [:duration_time, :event, :start_time, :storage_date])
+    ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: %i[duration_time event start_time storage_date])
   end
 end

@@ -1,5 +1,5 @@
 class CargosController < ApplicationController
-  before_action :set_cargo, only: [:show, :update, :destroy]
+  before_action :set_cargo, only: %i[show update destroy]
 
   # GET /cargos
   def index
@@ -10,7 +10,7 @@ class CargosController < ApplicationController
 
   # GET /cargos/1
   def show
-    render json: @cargo
+    render json: @cargo, include: %i[truck delivery]
   end
 
   # POST /cargos
@@ -47,6 +47,6 @@ class CargosController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def cargo_params
-    ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: [:truck, :delivery])
+    ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: %i[truck delivery])
   end
 end

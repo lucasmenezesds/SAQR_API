@@ -1,5 +1,5 @@
 class DeliveriesController < ApplicationController
-  before_action :set_delivery, only: [:show, :update, :destroy]
+  before_action :set_delivery, only: %i[show update destroy]
 
   # GET /deliveries
   def index
@@ -10,7 +10,7 @@ class DeliveriesController < ApplicationController
 
   # GET /deliveries/1
   def show
-    render json: @delivery
+    render json: @delivery, include: %i[picking_time load_time transportation_time receive_time storage_time cargos]
   end
 
   # POST /deliveries
@@ -46,6 +46,6 @@ class DeliveriesController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def delivery_params
-    ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: [:picking_time, :load_time, :transportation_time, :receive_time, :storage_time, :delivery_date])
+    ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: %i[picking_time load_time transportation_time receive_time storage_time delivery_date])
   end
 end
