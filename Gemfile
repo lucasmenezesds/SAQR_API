@@ -23,7 +23,13 @@ gem 'puma', '~> 3.7'
 # gem 'capistrano-rails', group: :development
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem 'rack-cors'
+gem 'rack-cors'
+
+# ActiveModel::Serializers allows you to generate your JSON in an object-oriented and convention-driven manner.
+gem 'active_model_serializers', '~> 0.10.7'
+
+# A plugin for versioning Rails based RESTful APIs.
+gem 'versionist', '~> 1.7'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -32,6 +38,14 @@ group :development, :test do
   # Loads environment variables from `.env.development`.
   gem 'dotenv', '~> 2.2', '>= 2.2.1'
 
+  # rspec-rails is a testing framework for Rails 3.x, 4.x and 5.0.
+  gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
+  # A library for setting up Ruby objects as test data
+  gem 'factory_bot_rails', '~> 4.8', '>= 4.8.2'
+  # A library for generating fake data such as names, addresses, and phone numbers.
+  gem 'faker', '~> 1.8', '>= 1.8.7'
+
+  gem 'pry-rails', '~> 0.3.6'
 end
 
 group :development do
