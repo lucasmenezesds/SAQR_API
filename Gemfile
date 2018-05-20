@@ -46,6 +46,7 @@ group :development, :test do
   gem 'faker', '~> 1.8', '>= 1.8.7'
 
   gem 'pry-rails', '~> 0.3.6'
+  gem 'simplecov', require: false
 end
 
 group :development do
