@@ -21,7 +21,7 @@ describe PickingTimeSeed do
 
   describe '#to_hash' do
     context 'when I call the method on PickingTimeSeed Class' do
-      it 'should return the proper keys' do
+      it 'should return a hash including the proper keys' do
         picking_time_hash = picking_time.to_hash
         expect(picking_time_hash).to include('duration_time', 'start_time',
                                              'number_of_items', 'number_of_items_type',
@@ -45,10 +45,12 @@ describe PickingTimeSeed do
 
   describe '#final_timestamp' do
     context 'when I callthe method on PickingTimeSeed Class' do
-      it 'should return the date plus 60 minutes' do
-        allow_any_instance_of(PickingTimeSeed).to receive(:generate_time).and_return(3600)
+      it 'should return the date plus 61 minutes' do
+        # it will mock start_time and duration_time
+        allow_any_instance_of(PickingTimeSeed).to receive(:generate_time).and_return(60)
 
-        expected_final_stamp = expected_date_time_result + 60.minutes
+        # 60 minutes from the add_time at @start_time and 1 minute from @duration_time
+        expected_final_stamp = expected_date_time_result + 61.minutes
         final_timestamp = picking_time.final_timestamp
 
         expect(expected_final_stamp).to eql(final_timestamp)
