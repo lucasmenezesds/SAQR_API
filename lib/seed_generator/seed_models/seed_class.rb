@@ -19,9 +19,9 @@ class SeedClass
     end
   end
 
-  def add_time(received_datetime, generated_time, time_type)
-    if %w[seconds minutes hours].include?(time_type) && received_datetime.is_a?(DateTime) && generated_time.is_a?(Numeric)
-      generated_minutes = generated_time.send(time_type)
+  def add_time(received_datetime, time_to_add, time_type)
+    if %w[seconds minutes hours].include?(time_type) && received_datetime.is_a?(DateTime) && time_to_add.is_a?(Numeric)
+      generated_minutes = time_to_add.send(time_type)
       return received_datetime + generated_minutes
     end
     received_datetime
