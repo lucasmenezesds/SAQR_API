@@ -1,0 +1,2 @@
+class CitiesDistancesCollection < ApplicationRecord
+end
