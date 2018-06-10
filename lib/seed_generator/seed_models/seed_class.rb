@@ -1,5 +1,5 @@
 require 'faker'
-require 'active_support'
+# require 'active_support'
 require 'active_support/core_ext/numeric/time'
 
 Faker::Config.locale = 'pt-BR'
