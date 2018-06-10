@@ -28,10 +28,10 @@ class TransportationTimeSeed < SeedClass
   end
 
   def populate_cities_origin_dest(number_of_cities)
-    origin = generate_cities(number_of_cities)
-    destination = generate_cities(number_of_cities, @origin_city)
+    # TODO: Improve the origin/destination city generator by getting existing Registred Cities
+    @origin_city_id = generate_cities(number_of_cities)
+    @destination_city_id = generate_cities(number_of_cities, @origin_city_id)
     # TODO: Develop distance model etc gettings from the google_maps_consumer
+    @distance = rand(50_000..1_500_000)
   end
-
-
 end
