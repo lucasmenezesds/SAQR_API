@@ -10,7 +10,7 @@ class CsvParser
   end
 
   def parse_file(file_name)
-    path = "#{@files_path}/#{file_name}"
+    path = File.join(@files_path, file_name)
     CSV.table(path)
   end
 

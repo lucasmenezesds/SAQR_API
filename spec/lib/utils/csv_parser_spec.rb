@@ -36,7 +36,7 @@ describe CsvParser do
   end
 
   describe '#to_hash' do
-    context 'when I call the method passing a CSV::Row' do
+    context 'when I call the method passing a CSV::Row successfully' do
       it 'should return a hash including the proper keys' do
         expect(csv_parser.to_hash(parsed_file[1])).to include('name',
                                                               'state',
@@ -51,8 +51,9 @@ describe CsvParser do
       end
     end
   end
+
   describe '#to_array_of_hashes' do
-    context 'when I call the method passing the parsed file' do
+    context 'when I call the method passing the parsed file successfully' do
       it 'should return an array with 12 elements' do
         expect(array_of_hashes.size).to eql(12)
       end
@@ -71,4 +72,5 @@ describe CsvParser do
       include_examples 'returned hash should have the city', 'Aguaí'
     end
   end
+  # TODO: Improve code add the fails cases / errors handling
 end
