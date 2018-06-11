@@ -24,7 +24,7 @@ describe ReceiveTimeSeed do
       it 'should return a hash including the proper keys' do
         receive_time_hash = receive_time.to_hash
         expect(receive_time_hash).to include('duration_time', 'start_time',
-                                          'event', 'receive_date')
+                                          'event', 'received_date')
       end
     end
 

@@ -15,7 +15,7 @@ def load_seed(seed_name)
 end
 
 
-# load_seed 'city'
+load_seed 'city'
 load_seed 'db_generator'
 
 
