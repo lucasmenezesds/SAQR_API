@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180419203422) do
+ActiveRecord::Schema.define(version: 20180531183110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,12 +62,12 @@ ActiveRecord::Schema.define(version: 20180419203422) do
     t.datetime "load_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.time "start_time"
+    t.datetime "start_time"
   end
 
   create_table "picking_times", force: :cascade do |t|
     t.integer "duration_time"
-    t.time "start_time"
+    t.datetime "start_time"
     t.integer "number_of_items"
     t.integer "number_of_items_type"
     t.datetime "picking_date"
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 20180419203422) do
     t.datetime "received_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.time "start_time"
+    t.datetime "start_time"
   end
 
   create_table "storage_times", force: :cascade do |t|
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 20180419203422) do
     t.datetime "storage_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.time "start_time"
+    t.datetime "start_time"
   end
 
   create_table "transportation_times", force: :cascade do |t|
@@ -102,6 +102,8 @@ ActiveRecord::Schema.define(version: 20180419203422) do
     t.bigint "destination_city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "start_time"
+    t.integer "distance"
     t.index ["destination_city_id"], name: "index_transportation_times_on_destination_city_id"
     t.index ["origin_city_id"], name: "index_transportation_times_on_origin_city_id"
   end
