@@ -12,9 +12,9 @@ class GoogleMapsConsumer
 
     # TODO: Develop the API consumer, did just to keep developing
     # the seed for generator now
-    puts origin_city
-    puts destination_city
-    puts current_req_number
+    # puts origin_city
+    # puts destination_city
+    # puts current_req_number
 
     if origin_city == 'Uberlandia' && destination_city == 'Sao Paulo'
       return 591239

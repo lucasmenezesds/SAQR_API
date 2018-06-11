@@ -31,7 +31,7 @@ describe ReceiveTimeSeed do
     context 'when the I receive the returned hash expecting the key' do
       include_examples 'returned hash should have the key', :duration_time, Integer
       include_examples 'returned hash should have the key', :start_time, DateTime
-      include_examples 'returned hash should have the key', :receive_date, DateTime
+      include_examples 'returned hash should have the key', :received_date, DateTime
 
       it 'event to be_a_kind_of Boolean' do
         receive_time_hash = receive_time.to_hash
