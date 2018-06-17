@@ -1,5 +1,4 @@
 require 'faker'
-require_relative '../../spec/rails_helper'
 
 Dir[File.join(Rails.root, 'lib/seed_generator/seed_models/*.rb')].each do |file|
   require file
@@ -41,6 +40,8 @@ class DbSeedGenerator
     Cargo.create!(cargo.to_hash)
   end
 
+  private
+
   def create_delivery_data_dependencies(delivery_hash)
     date = delivery_hash['delivery_date']
 
@@ -75,10 +76,10 @@ class DbSeedGenerator
   def create_delivery_data(received_data)
     delivery_hash = create_delivery_data_dependencies(received_data)
     delivery_hash['delivery_date'] = delivery_hash['delivery_date'].to_s
-    Delivery.create!(delivery_hash)
-  end
+    delivery_obj = DeliverySeed.new(delivery_hash)
 
-  # private
+    Delivery.create!(delivery_obj.to_hash)
+  end
 
   def create_driver_and_trucks
     @number_of_drivers.times do
@@ -88,7 +89,6 @@ class DbSeedGenerator
       Truck.create!(created_truck.to_hash)
     end
   end
-
 
 
   def generate_complete_delivery

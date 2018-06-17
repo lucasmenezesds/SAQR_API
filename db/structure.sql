@@ -146,7 +146,8 @@ CREATE TABLE public.deliveries (
     storage_time_id bigint,
     delivery_date timestamp without time zone,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    total_duration integer
 );
 
 
@@ -812,6 +813,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180419203422'),
 ('20180531183110'),
 ('20180602215511'),
-('20180603033923');
+('20180603033923'),
+('20180616204541');
 
 
