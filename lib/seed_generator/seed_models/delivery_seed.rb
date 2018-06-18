@@ -2,7 +2,7 @@ require_relative 'seed_class'
 
 class DeliverySeed < SeedClass
   def initialize(received_hash = {})
-
+    @id = received_hash.fetch('id', nil)
     @picking_time = received_hash.fetch('picking_time')
     @load_time = received_hash.fetch('load_time')
     @transportation_time = received_hash.fetch('transportation_time')

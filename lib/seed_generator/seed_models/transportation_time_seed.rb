@@ -2,7 +2,8 @@ require_relative 'seed_class'
 
 class TransportationTimeSeed < SeedClass
 
-  def initialize(received_datetime, number_of_cities)
+  def initialize(received_datetime, number_of_cities, current_id = nil)
+    @id = current_id
     @duration_time = generate_time(1800, 3600) # TODO: CHECK VALUES
     @start_time = add_time(received_datetime, generate_time(1, 120), 'minutes')
     @transportation_date = received_datetime

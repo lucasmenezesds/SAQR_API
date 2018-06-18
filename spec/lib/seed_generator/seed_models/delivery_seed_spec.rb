@@ -32,6 +32,9 @@ describe DeliverySeed do
                                                  event: false,
                                                  storage_date: '2001-10-08 23:30:13',
                                                  start_time: '2001-10-09 00:07:13')
+
+    seeds_hash['id'] = 10
+
     seeds_hash
   end
 
@@ -54,17 +57,32 @@ describe DeliverySeed do
   end
 
   describe '#to_hash' do
-    context 'when I call the method on DeliverySeed Class' do
+    context 'when the Class is created with id' do
       it 'should return a hash including the proper keys' do
         delivery_hash = delivery.to_hash
-        expect(delivery_hash).to include('picking_time', 'load_time',
+        expect(delivery_hash).to include('id', 'picking_time', 'load_time',
                                          'transportation_time', 'receive_time',
                                          'storage_time', 'delivery_date',
                                          'total_duration')
       end
+
+      it 'should have the key id' do
+        obj_hash = delivery.to_hash
+        expect(obj_hash).to have_key('id')
+      end
+    end
+
+    context 'when the Class is not created with id' do
+      it 'should not have the key id' do
+        new_obj = delivery
+        new_obj.id = nil
+        load_time_hash = new_obj.to_hash
+        expect(load_time_hash).not_to have_key('id')
+      end
     end
 
     context 'when the I receive the returned hash expecting the key' do
+      include_examples 'returned hash should have the key', :id, Integer
       include_examples 'returned hash should have the key', :picking_time, PickingTime
       include_examples 'returned hash should have the key', :load_time, LoadTime
       include_examples 'returned hash should have the key', :transportation_time, TransportationTime

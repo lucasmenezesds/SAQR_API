@@ -7,7 +7,7 @@ describe ReceiveTimeSeed do
     described_class.new(DateTime.new(2010,
                                      10, 25,
                                      10, 35,
-                                     20, '-03:00'))
+                                     20, '-03:00'), 10)
   end
 
   let(:expected_date_time_result) { DateTime.new(2010, 10, 25, 10, 35, 20, '-03:00') }
@@ -20,15 +20,30 @@ describe ReceiveTimeSeed do
   end
 
   describe '#to_hash' do
-    context 'when I call the method on ReceiveTimeSeed Class' do
+    context 'when the Class is created with id' do
       it 'should return a hash including the proper keys' do
         receive_time_hash = receive_time.to_hash
-        expect(receive_time_hash).to include('duration_time', 'start_time',
-                                          'event', 'received_date')
+        expect(receive_time_hash).to include('id', 'duration_time', 'start_time',
+                                             'event', 'received_date')
+      end
+
+      it 'should have the key id' do
+        obj_hash = receive_time.to_hash
+        expect(obj_hash).to have_key('id')
+      end
+    end
+
+    context 'when the Class is not created with id' do
+      it 'should not have the key id' do
+        new_obj = receive_time
+        new_obj.id = nil
+        receive_time_hash = new_obj.to_hash
+        expect(receive_time_hash).not_to have_key('id')
       end
     end
 
     context 'when the I receive the returned hash expecting the key' do
+      include_examples 'returned hash should have the key', :id, Integer
       include_examples 'returned hash should have the key', :duration_time, Integer
       include_examples 'returned hash should have the key', :start_time, DateTime
       include_examples 'returned hash should have the key', :received_date, DateTime
