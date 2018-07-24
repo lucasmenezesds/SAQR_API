@@ -1,11 +1,10 @@
 require 'faker'
-# require 'active_support'
 require 'active_support/core_ext/numeric/time'
 
 Faker::Config.locale = 'pt-BR'
 
 
-# Parent Class
+# Parent Class for the Models Seed Generator
 class SeedClass
   attr_accessor :id
   def to_hash

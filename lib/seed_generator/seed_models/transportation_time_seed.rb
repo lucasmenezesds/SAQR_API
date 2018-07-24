@@ -1,5 +1,6 @@
 require_relative 'seed_class'
 
+# TransportationTimes Model Seed Generator
 class TransportationTimeSeed < SeedClass
 
   def initialize(received_datetime, number_of_cities, current_id = nil)

@@ -1,6 +1,6 @@
 require_relative 'seed_class'
 
-# LoadTime
+# LoadTimes Model Seed Generator
 class LoadTimeSeed < SeedClass
   def initialize(received_datetime, current_id = nil)
     @id = current_id

@@ -60,9 +60,9 @@ describe DeliverySeed do
     context 'when the Class is created with id' do
       it 'should return a hash including the proper keys' do
         delivery_hash = delivery.to_hash
-        expect(delivery_hash).to include('id', 'picking_time', 'load_time',
-                                         'transportation_time', 'receive_time',
-                                         'storage_time', 'delivery_date',
+        expect(delivery_hash).to include('id', 'picking_time_id', 'load_time_id',
+                                         'transportation_time_id', 'receive_time_id',
+                                         'storage_time_id', 'delivery_date',
                                          'total_duration')
       end
 
@@ -83,11 +83,11 @@ describe DeliverySeed do
 
     context 'when the I receive the returned hash expecting the key' do
       include_examples 'returned hash should have the key', :id, Integer
-      include_examples 'returned hash should have the key', :picking_time, PickingTime
-      include_examples 'returned hash should have the key', :load_time, LoadTime
-      include_examples 'returned hash should have the key', :transportation_time, TransportationTime
-      include_examples 'returned hash should have the key', :receive_time, ReceiveTime
-      include_examples 'returned hash should have the key', :storage_time, StorageTime
+      include_examples 'returned hash should have the key', :picking_time_id, PickingTime
+      include_examples 'returned hash should have the key', :load_time_id, LoadTime
+      include_examples 'returned hash should have the key', :transportation_time_id, TransportationTime
+      include_examples 'returned hash should have the key', :receive_time_id, ReceiveTime
+      include_examples 'returned hash should have the key', :storage_time_id, StorageTime
       include_examples 'returned hash should have the key', :delivery_date, DateTime
       include_examples 'returned hash should have the key', :total_duration, Integer
 

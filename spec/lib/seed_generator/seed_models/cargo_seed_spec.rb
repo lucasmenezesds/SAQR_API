@@ -17,7 +17,7 @@ describe CargoSeed do
     context 'when the Class is created with id' do
       it 'should return a hash including the proper keys' do
         cargo_hash = cargo.to_hash
-        expect(cargo_hash).to include('truck', 'delivery','id')
+        expect(cargo_hash).to include('truck_id', 'delivery_id', 'id')
       end
 
       it 'should have the key id' do
@@ -37,8 +37,8 @@ describe CargoSeed do
 
     context 'when the I receive the returned hash expecting the key' do
       include_examples 'returned hash should have the key', :id, Integer
-      include_examples 'returned hash should have the key', :truck, Integer
-      include_examples 'returned hash should have the key', :delivery, Integer
+      include_examples 'returned hash should have the key', :truck_id, Integer
+      include_examples 'returned hash should have the key', :delivery_id, Integer
     end
   end
 end

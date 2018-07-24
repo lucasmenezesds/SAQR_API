@@ -1,6 +1,6 @@
 require_relative 'seed_class'
 
-#
+# ReceiveTimes Model Seed Generator
 class ReceiveTimeSeed < SeedClass
   def initialize(received_datetime, current_id = nil)
     @id = current_id
