@@ -47,6 +47,8 @@ group :development, :test do
 
   gem 'pry-rails', '~> 0.3.6'
   gem 'simplecov', require: false
+
+  gem 'activerecord-import', '~> 0.23.0'
 end
 
 group :development do

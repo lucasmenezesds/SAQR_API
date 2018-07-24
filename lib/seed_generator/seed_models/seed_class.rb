@@ -1,14 +1,16 @@
 require 'faker'
-# require 'active_support'
 require 'active_support/core_ext/numeric/time'
 
 Faker::Config.locale = 'pt-BR'
 
 
-# Parent Class
+# Parent Class for the Models Seed Generator
 class SeedClass
+  attr_accessor :id
   def to_hash
-    Hash[instance_variables.map { |name| [name.to_s.delete('@'), instance_variable_get(name)] }]
+    hash = Hash[instance_variables.map { |name| [name.to_s.delete('@'), instance_variable_get(name)] }]
+    hash.except!('id') if hash['id'].nil?
+    hash
   end
 
   def generate_time(min, max)

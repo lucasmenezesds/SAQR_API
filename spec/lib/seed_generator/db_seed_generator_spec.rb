@@ -8,20 +8,22 @@ describe DbSeedGenerator do
     City.create!('name' => 'City2', 'state' => 'S2', 'country' => 'BR')
   end
 
-  let(:db_seed_generator) do
-    described_class.new(2, 2, 10, %w[25/10/2010 25/10/2010])
+  shared_examples 'returned hash should have the key' do |number_of_deliveries, bulk_size|
+    it "should populate the database with #{number_of_deliveries} deliveries" do
+      before_populate = Delivery.count
+      described_class.new(2, 2, number_of_deliveries, %w[25/10/2010 25/10/2010], bulk_size).populate
+      after_populate = Delivery.count
+      expect(after_populate).to eql(before_populate + number_of_deliveries)
+    end
   end
 
   let(:expected_date_time_result) { DateTime.new(2010, 10, 25, 10, 35, 20, '-02:00') }
 
   describe '#populate' do
     context 'when I call the method on DbSeedGenerator Class' do
-      it 'should populate the database with 10 deliveries' do
-        before_populate = Delivery.count
-        db_seed_generator.populate
-        after_populate = Delivery.count
-        expect(after_populate).to eql(before_populate + 10)
-      end
+      include_examples 'returned hash should have the key', 15, 10
+      # include_examples 'returned hash should have the key', 1000, 100
+      # include_examples 'returned hash should have the key', 10_000, 100
     end
   end
   # TODO: Add fail cases etc
