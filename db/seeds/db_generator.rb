@@ -2,7 +2,16 @@ require 'seed_generator/db_seed_generator'
 
 puts '[START] Seed Generator'
 
-seed_generator = DbSeedGenerator.new(10, 10, 10)
+
+if Rails.env == 'test'
+  number_of_cities = 2
+  number_of_deliveries = 10
+else
+  number_of_cities = 300
+  number_of_deliveries = 50_000
+end
+
+seed_generator = DbSeedGenerator.new(number_of_cities, 100, number_of_deliveries)
 seed_generator.populate
 
 puts '[DONE] Seed Generator'
