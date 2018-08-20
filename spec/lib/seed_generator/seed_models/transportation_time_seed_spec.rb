@@ -1,7 +1,6 @@
 require 'seed_generator/seed_models/transportation_time_seed'
 require 'support/matchers'
 
-# TODO: DOING
 describe TransportationTimeSeed do
   let(:transportation_time) do
     described_class.new(DateTime.new(2010,
