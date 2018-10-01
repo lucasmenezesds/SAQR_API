@@ -31,6 +31,12 @@ gem 'active_model_serializers', '~> 0.10.7'
 # A plugin for versioning Rails based RESTful APIs.
 gem 'versionist', '~> 1.7'
 
+### Statistical Gems ###
+# Numo::NArray - New NArray class library in Ruby/Numo.
+gem 'numo-narray', '~> 0.9.1.3'
+# GSL interface for Ruby/Numo::NArray
+gem 'numo-gsl', '~> 0.1.2'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
