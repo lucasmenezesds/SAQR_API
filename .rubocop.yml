@@ -1,5 +1,8 @@
 Metrics/BlockLength:
   ExcludedMethods: ['describe', 'context']
 
+Metrics/LineLength:
+  Max: 100
+
 Style/DateTime:
   Enabled: false
