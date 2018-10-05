@@ -32,14 +32,13 @@ describe KolmogorovSmirnovSteps do
 
     end
 
-    # TODO: Finish Y_values implementation
-    # it 'should return the expected Y values' do
-    #   expected_value = [0.1, 0.2, 0.2, 0.4, 0.5, 0.6, 0.6, 0.6, 0.8, 1.0]
-    #
-    #   result = calculated_ecdf['y_values']
-    #
-    #   expect(result).to eql expected_value
-    # end
+    it 'should return the expected Y values' do
+      expected_value = [0.1, 0.2, 0.2, 0.4, 0.5, 0.6, 0.6, 0.6, 0.8, 1.0]
+
+      result = calculated_ecdf['y_values']
+
+      expect(result).to eql expected_value
+    end
   end
 
 end

@@ -1,4 +1,4 @@
-require_relative '../../../lib/utils/numo_array_utils'
+require_relative '../../../lib/utils/numo_and_array_utils'
 
 describe 'NumoArrayUtils' do
   # let(:numo_array_utils) { return described_class.new }
