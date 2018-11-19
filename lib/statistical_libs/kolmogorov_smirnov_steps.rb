@@ -1,4 +1,5 @@
 require 'numo/narray'
+require 'numo/gsl'
 require_relative '../../lib/utils/numo_and_array_utils'
 
 # Class
@@ -25,5 +26,12 @@ class KolmogorovSmirnovSteps
     final_result['y_values'] = y_values
 
     final_result
+  end
+
+  # TODO: remove it / Fix it
+  def calculate_best_fit(array_of_numbers, aquele_rolezao)
+    testing = Numo::GSL::Fit()
+
+    testing
   end
 end
