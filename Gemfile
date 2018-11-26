@@ -37,6 +37,9 @@ gem 'numo-narray', '~> 0.9.1.3'
 # GSL interface for Ruby/Numo::NArray
 gem 'numo-gsl', '~> 0.1.2'
 
+gem 'distribution', '~> 0.7.3'
+gem 'statsample', '~> 2.1'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
