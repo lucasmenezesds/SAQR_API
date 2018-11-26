@@ -1,4 +1,4 @@
-def get_seed_hash
+def set_seed_hash
   seeds_hash = {}
   seeds_hash['picking_time'] = PickingTime.new(duration_time: 3185,
                                                start_time: '2001-10-08 17:59:15',

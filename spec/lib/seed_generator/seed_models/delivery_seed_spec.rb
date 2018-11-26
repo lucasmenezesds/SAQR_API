@@ -4,9 +4,7 @@ require 'support/matchers'
 require 'rails_helper'
 
 describe DeliverySeed do
-  let(:seeds_hash) do
-    get_seed_hash
-  end
+  let(:seeds_hash, &method(:set_seed_hash))
 
   let(:delivery) do
     seeds_hash['delivery_date'] = DateTime.new(2010,

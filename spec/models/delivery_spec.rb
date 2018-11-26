@@ -3,7 +3,7 @@ require 'fixtures/seed_hash'
 
 RSpec.describe Delivery, type: :model do
   before(:all) do
-    @delivery = described_class.new(get_seed_hash)
+    @delivery = described_class.new(set_seed_hash)
     @durations = @delivery.get_duration_times(1, 2)
   end
 

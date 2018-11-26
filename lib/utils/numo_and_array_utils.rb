@@ -21,5 +21,4 @@ def get_numo_array_data(received_array)
   [min, max, size]
 end
 
-
 # end
