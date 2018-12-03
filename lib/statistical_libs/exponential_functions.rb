@@ -48,6 +48,18 @@ class ExponentialFunctions
     calculate_theoretical_cdf sample_to_process, @mle_data[:lambda]
   end
 
+  def calculate_pdf(received_data, lambda)
+    if received_data.class != Array || received_data.empty?
+      throw('#calculate_pdf please recheck the parameters')
+    else
+      final_data = []
+      received_data.each do |element|
+        final_data << Distribution::Exponential.pdf(element, lambda)
+      end
+      final_data
+    end
+  end
+
   # With NUMO/GSL
   # def calculate_theoretical_cdf2(received_data, mean)
   #   if (mean.class != Integer || mean.class != Float) && (received_data.class != Array || received_data.empty?)
