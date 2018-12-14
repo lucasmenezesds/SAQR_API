@@ -4,7 +4,7 @@ require 'fixtures/seed_hash'
 RSpec.describe Delivery, type: :model do
   before(:all) do
     @delivery = described_class.new(get_seed_hash)
-    @durations = @delivery.get_duration_times(1, 2)
+    @durations = Delivery.get_duration_times(1, 2)
   end
 
   describe '#get_duration_times' do
@@ -23,7 +23,7 @@ RSpec.describe Delivery, type: :model do
   describe '#the_population?' do
     it 'should return true' do
       duration_size = @durations.size
-      expect(@delivery.the_population?(duration_size)).to be_truthy
+      expect(Delivery.the_population?(duration_size)).to be_truthy
     end
   end
 
