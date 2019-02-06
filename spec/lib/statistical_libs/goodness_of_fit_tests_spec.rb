@@ -18,6 +18,13 @@ describe GoodnessOfFitTests do
 
       expect(result).to eql expected_result
     end
+
+    it 'should throw an error' do
+      expect { gof_class.kolmogorov_smirnov_test sample, 'test' }.to(
+        raise_error(ArgumentError,
+                    'Check #get_statistical_function_class condition: The name passed as parameter is invalid')
+      )
+    end
   end
 
   # describe '#anderson_darlin_test' do

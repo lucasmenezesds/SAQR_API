@@ -1,10 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe "Cities", type: :request do
-  describe "GET /cities" do
-    it "works! (now write some real specs)" do
-      get cities_path, params: {}, headers: { ACCEPT: 'application/vnd.api+json' }
-      expect(response).to have_http_status(200)
+RSpec.describe 'Cities', type: :request do
+  describe 'GET /cities/1' do
+    context 'when I send the get request with accept header' do
+      it 'should return 200' do
+        get "#{cities_path}/1", params: {}, headers: { ACCEPT: 'application/vnd.api+json' }
+        puts response.body
+        expect(response).to have_http_status(200)
+      end
     end
   end
 end

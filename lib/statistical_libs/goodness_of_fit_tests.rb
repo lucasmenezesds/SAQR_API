@@ -1,3 +1,4 @@
+require_relative '../../lib/utils/function_auxiliaries'
 require_relative '../../lib/statistical_libs/exponential_functions'
 require_relative '../../lib/statistical_libs/statistical_methods'
 require_relative '../../lib/statistical_libs/kolmogorov_smirnov_steps'
@@ -7,9 +8,9 @@ class GoodnessOfFitTests
   attr_reader :distribution_name, :sample_to_process
 
   def initialize(sample_to_process = [], distribution_name = 'exponential')
-    @sample_to_process = sample_to_process
-    @distribution_name = distribution_name
-    @kolmogorov = KolmogorovSmirnovSteps.new
+    @sample_to_process   = sample_to_process
+    @distribution_name   = distribution_name
+    @kolmogorov          = KolmogorovSmirnovSteps.new
     @statistical_methods = StatisticalMethods.new
   end
 
@@ -18,12 +19,13 @@ class GoodnessOfFitTests
     empirical_cdf = @statistical_methods.calculate_ecdf sample_to_process
 
     empirical_cdf_array = empirical_cdf['y_values'].sort
-    # if distribution_name == 'exponential'
     puts "Distribution => #{distribution_name}"
-    expo_class = ExponentialFunctions.new
-    theoretical_exponential_cdf = expo_class.generate_theoretical_cdf sample_to_process
+
+    function_class_name = get_statistical_function_class distribution_name
+    function_class = function_class_name.new
+
+    theoretical_exponential_cdf = function_class.generate_theoretical_cdf sample_to_process
     theoretical_exponential_cdf = theoretical_exponential_cdf.sort
-    # end
 
     @kolmogorov.calculate_d_value empirical_cdf_array, theoretical_exponential_cdf
   end
