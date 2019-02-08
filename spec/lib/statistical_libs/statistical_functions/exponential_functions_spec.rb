@@ -1,7 +1,7 @@
 require 'rspec'
-require_relative '../../../lib/statistical_libs/exponential_functions'
-require_relative '../../../spec/fixtures/lib/statistical_libs/general_mocks'
-require_relative '../../../spec/fixtures/lib/statistical_libs/exponential_functions_mocks'
+require_relative '../../../../lib/statistical_libs/statistical_functions/exponential_functions'
+require_relative '../../../../spec/fixtures/lib/statistical_libs/general_mocks'
+require_relative '../../../../spec/fixtures/lib/statistical_libs/exponential_functions_mocks'
 
 describe ExponentialFunctions do
   let(:expo_functions) do
@@ -10,9 +10,9 @@ describe ExponentialFunctions do
   let(:sample, &method(:set_general_sample))
 
   let(:mle_result) do
-    { sumup: 346_557.0,
-      size: 20,
-      mean: 17_327.85,
+    { sumup:  346_557.0,
+      size:   20,
+      mean:   17_327.85,
       lambda: 0.000057710564207330976 }
   end
 
@@ -38,7 +38,7 @@ describe ExponentialFunctions do
     #TODO check it
     it 'should return an array with the generated theoretical cdf' do
       expected_result = set_expected_theoretical_cdf_result
-      result = expo_functions.generate_theoretical_cdf(sample)
+      result          = expo_functions.generate_theoretical_cdf(sample)
 
       expect(result).to match_array(expected_result)
     end

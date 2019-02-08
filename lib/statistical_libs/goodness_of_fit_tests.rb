@@ -1,5 +1,5 @@
 require_relative '../../lib/utils/function_auxiliaries'
-require_relative '../../lib/statistical_libs/exponential_functions'
+require_relative '../../lib/statistical_libs/statistical_functions/exponential_functions'
 require_relative '../../lib/statistical_libs/statistical_methods'
 require_relative '../../lib/statistical_libs/kolmogorov_smirnov_steps'
 

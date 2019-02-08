@@ -1,5 +1,5 @@
 require 'active_support/core_ext/string/inflections'
-require_relative '../../lib/statistical_libs/exponential_functions'
+require_relative '../../lib/statistical_libs/statistical_functions/exponential_functions'
 
 
 def get_statistical_function_class(function_name)

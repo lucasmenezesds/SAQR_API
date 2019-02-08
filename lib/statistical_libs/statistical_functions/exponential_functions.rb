@@ -1,7 +1,7 @@
 require 'distribution'
 require 'numo/gsl'
 
-# class for methods of exponential functions and it derivatives
+# class for methods of Exponential functions and it derivatives
 class ExponentialFunctions
   attr_reader :mle_data
 
