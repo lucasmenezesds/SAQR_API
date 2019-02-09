@@ -14,7 +14,6 @@ class ExponentialFunctions
     if received_sample.class != Array || received_sample.empty?
       throw('calculate_mle should not receive empty array of numbers')
     else
-      @mle_data = {}
       sorted_sample = received_sample.sort
 
       @mle_data[:size] = sorted_sample.size
