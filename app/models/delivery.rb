@@ -18,4 +18,13 @@ class Delivery < ApplicationRecord
     Delivery.count == number_of_samples
   end
 
+  def get_steps_ids_based_on_city_deliveries(city1, city2)
+    Delivery.joins(:transportation_time)
+            .select(:id, :picking_time_id, :load_time_id, :transportation_time_id, :receive_time_id, :storage_time_id)
+            .where("origin_city_id=#{city1} and destination_city_id=#{city2}
+               or origin_city_id=#{city2} and destination_city_id=#{city1}")
+            .as_json(only: %i[id picking_time_id load_time_id transportation_time_id receive_time_id storage_time_id])
+            .reduce({}) { |new_hash, pairs| pairs.each { |key, value| (new_hash[key] ||= []) << value }; new_hash }
+  end
+
 end
