@@ -37,6 +37,8 @@ gem 'numo-narray', '~> 0.9.1.3'
 # GSL interface for Ruby/Numo::NArray
 gem 'numo-gsl', '~> 0.1.2'
 
+gem 'rb-gsl', '~> 1.16', '>= 1.16.0.6'
+
 gem 'distribution', '~> 0.7.3'
 gem 'statsample', '~> 2.1'
 

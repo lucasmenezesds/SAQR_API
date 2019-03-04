@@ -31,13 +31,14 @@ module StatisticalMethods
     if received_array.class != Array || received_array.empty?
       throw('#get_natural_logarithm_array should not receive empty array of numbers')
     else
-      received_array.map do |element|
-        if element.is_a? Numeric
-          Math.log(element, Math::E)
-        end
-      end
+      received_array.map(&method(:get_natural_logarithm))
     end
   rescue StandardError => e
     "Something went wrong during the calculation, Error: #{e}"
+  end
+
+  # Calculate the ln(x) for the received element
+  def self.get_natural_logarithm(element)
+    Math.log(element, Math::E) if element.is_a? Numeric
   end
 end
