@@ -16,9 +16,9 @@ class GetDeliveryProbabilitiesController < ApplicationController
   def set_get_data_to_process
     @delivery_probability = {}
     get_delivery_probability_params
-    @origin_city = params.fetch :origin_city
-    @destination_city = params.fetch :destination_city
-    @number_of_tests = params.fetch :number_of_tests, 1000
+    @origin_city                = params.fetch :origin_city
+    @destination_city           = params.fetch :destination_city
+    @number_of_tests            = params.fetch :number_of_tests, 1000
     @generated_numbers_quantity = params.fetch :generated_numbers_quantity, 500
     # optional params TODO: Check if its interesting to get this data
     # @expected_time = params[:expected_time]
@@ -64,8 +64,7 @@ class GetDeliveryProbabilitiesController < ApplicationController
   # 
 
 end
-# STASHED \/
-
+# STASHED 
 require_relative '../../app/models/delivery'
 
 class GetDeliveryProbabilitiesController < ApplicationController
