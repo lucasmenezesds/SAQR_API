@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe GetDeliveryProbabilitiesController, type: :controller do
@@ -25,7 +27,7 @@ RSpec.describe GetDeliveryProbabilitiesController, type: :controller do
       request.headers.merge! headers_obj
       allow(Delivery)
         .to receive(:get_duration_times)
-              .and_return([1, 2, 3, 4])
+        .and_return([1, 2, 3, 4])
     end
 
     it 'should return a success response' do
@@ -34,9 +36,9 @@ RSpec.describe GetDeliveryProbabilitiesController, type: :controller do
     end
 
     it 'should return an error if the required params are missing' do
-      expect {
+      expect do
         get :index, params: {}, session: valid_session
-      }.to raise_error(message = 'param is missing or the value is empty: origin_city')
+      end.to raise_error('param is missing or the value is empty: origin_city')
     end
 
     it 'should return an hash' do

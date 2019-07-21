@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 require_relative 'seed_class'
 
 # TransportationTimes Model Seed Generator
 class TransportationTimeSeed < SeedClass
-
   def initialize(received_datetime, number_of_cities, current_id = nil)
     @id = current_id
     @duration_time = generate_time(1800, 3600) # TODO: CHECK VALUES
@@ -18,10 +19,9 @@ class TransportationTimeSeed < SeedClass
 
   def generate_cities(number_of_cities, origin_city = false)
     return rand(1..number_of_cities) unless origin_city
+
     generated_city = rand(1..number_of_cities)
-    while generated_city == origin_city
-      generated_city = rand(1..number_of_cities)
-    end
+    generated_city = rand(1..number_of_cities) while generated_city == origin_city
     generated_city
   end
 

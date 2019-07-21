@@ -1,5 +1,9 @@
+# frozen_string_literal: true
+
 require_relative '../../app/models/delivery'
 
+# Controller for the enpoint responsible to return the Deliveries Probabilities
+# rubocop:disable Naming/AccessorMethodName
 class GetDeliveryProbabilitiesController < ApplicationController
   # before_action :set_get_delivery_probability, only: %i[show update destroy]
 
@@ -61,68 +65,65 @@ class GetDeliveryProbabilitiesController < ApplicationController
   # get durations from storage where delivery_id IN [array]
   #
   #
-  # 
-
+  #
 end
-# STASHED 
-require_relative '../../app/models/delivery'
-
-class GetDeliveryProbabilitiesController < ApplicationController
-  # before_action :set_get_delivery_probability, only: %i[show update destroy]
-
-  # GET /get_delivery_probabilities
-  def index
-    set_get_data_to_process
-    data_from_db = get_array_of_ids_from_tables_to_process
-
-    render json: {}, status: :ok, content_type: "application/json"
-  end
-
-  private
-
-  def set_get_data_to_process
-    get_delivery_probabilities_params
-    @origin_city               = params.fetch :origin_city
-    @destination_city          = params.fetch :destination_city
-    @number_of_tests           = params.fetch :number_of_tests, 1000
-    @number_of_generated_seeds = params.fetch :number_of_generated_seeds, 500
-
-    # optional params TODO: Check if its interesting to get this data
-    # @expected_time = params[:expected_time]
-    # @number_of_items = params[:number_of_items]
-    # @number_of_items_type = params[:number_of_items_type]
-  end
-
-
-  # Use callbacks to share common setup or constraints between actions.
-  # def set_get_delivery_probability
-  #   @get_delivery_probability = GetDeliveryProbability.find(params[:id])
-  # end
-
-  #   Only allow a trusted parameter "white list" through.
-  def get_delivery_probabilities_params
-    params.require(%i[origin_city destination_city])
-  end
-
-  def get_array_of_ids_from_tables_to_process
-    hash_result                             = Delivery.get_steps_ids_based_on_city_deliveries @origin_city, @destination_city
-    data_from_db                            = {}
-    data_from_db['picking_time_ids']        = hash_result.fetch :picking_time_id, default: []
-    data_from_db['load_time_ids']           = hash_result.fetch :load_time_id, default: []
-    data_from_db['transportation_time_ids'] = hash_result.fetch :transportation_time_id, default: []
-    data_from_db['receive_time_ids']        = hash_result.fetch :receive_time_id, default: []
-    data_from_db['storage_time_ids']        = hash_result.fetch :storage_time_id, default: []
-    data_from_db
-  end
-
-  def get_steps_durations_from_tables_based_on_ids_list(ids_hash)
-    ids_lists                            = {}
-    ids_lists['picking_time_ids']        = PickingTime.get_durations_time_based_on_ids_list(ids_hash['picking_time_ids'] ||= [])
-    ids_lists['load_time_ids']           = LoadTime.get_durations_time_based_on_ids_list(ids_hash['load_time_ids'] ||= [])
-    ids_lists['transportation_time_ids'] = TransportationTime.get_durations_time_based_on_ids_list(ids_hash['transportation_time_ids'] ||= [])
-    ids_lists['receive_time_ids']        = ReceiveTime.get_durations_time_based_on_ids_list(ids_hash['receive_time_ids'] ||= [])
-    ids_lists['storage_time_ids']        = StorageTime.get_durations_time_based_on_ids_list(ids_hash['storage_time_ids'] ||= [])
-
-  end
-
-end
+# rubocop:enable Naming/AccessorMethodName
+# STASHED
+# require_relative '../../app/models/delivery'
+#
+# class GetDeliveryProbabilitiesController < ApplicationController
+#   # before_action :set_get_delivery_probability, only: %i[show update destroy]
+#
+#   # GET /get_delivery_probabilities
+#   def index
+#     set_get_data_to_process
+#     data_from_db = get_array_of_ids_from_tables_to_process
+#
+#     render json: {}, status: :ok, content_type: 'application/json'
+#   end
+#
+#   private
+#
+#   def set_get_data_to_process
+#     get_delivery_probabilities_params
+#     @origin_city               = params.fetch :origin_city
+#     @destination_city          = params.fetch :destination_city
+#     @number_of_tests           = params.fetch :number_of_tests, 1000
+#     @number_of_generated_seeds = params.fetch :number_of_generated_seeds, 500
+#
+#     # optional params TODO: Check if its interesting to get this data
+#     # @expected_time = params[:expected_time]
+#     # @number_of_items = params[:number_of_items]
+#     # @number_of_items_type = params[:number_of_items_type]
+#   end
+#
+#   # Use callbacks to share common setup or constraints between actions.
+#   # def set_get_delivery_probability
+#   #   @get_delivery_probability = GetDeliveryProbability.find(params[:id])
+#   # end
+#
+#   #   Only allow a trusted parameter "white list" through.
+#   def get_delivery_probabilities_params
+#     params.require(%i[origin_city destination_city])
+#   end
+#
+#   def get_array_of_ids_from_tables_to_process
+#     hash_result                             = Delivery.get_steps_ids_based_on_city_deliveries @origin_city, @destination_city
+#     data_from_db                            = {}
+#     data_from_db['picking_time_ids']        = hash_result.fetch :picking_time_id, default: []
+#     data_from_db['load_time_ids']           = hash_result.fetch :load_time_id, default: []
+#     data_from_db['transportation_time_ids'] = hash_result.fetch :transportation_time_id, default: []
+#     data_from_db['receive_time_ids']        = hash_result.fetch :receive_time_id, default: []
+#     data_from_db['storage_time_ids']        = hash_result.fetch :storage_time_id, default: []
+#     data_from_db
+#   end
+#
+#   def get_steps_durations_from_tables_based_on_ids_list(ids_hash)
+#     ids_lists                            = {}
+#     ids_lists['picking_time_ids']        = PickingTime.get_durations_time_based_on_ids_list(ids_hash['picking_time_ids'] ||= [])
+#     ids_lists['load_time_ids']           = LoadTime.get_durations_time_based_on_ids_list(ids_hash['load_time_ids'] ||= [])
+#     ids_lists['transportation_time_ids'] = TransportationTime.get_durations_time_based_on_ids_list(ids_hash['transportation_time_ids'] ||= [])
+#     ids_lists['receive_time_ids']        = ReceiveTime.get_durations_time_based_on_ids_list(ids_hash['receive_time_ids'] ||= [])
+#     ids_lists['storage_time_ids']        = StorageTime.get_durations_time_based_on_ids_list(ids_hash['storage_time_ids'] ||= [])
+#   end
+# end

@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Serializer for the Trucks
 class TruckSerializer < ActiveModel::Serializer
   attributes :id, :model
 

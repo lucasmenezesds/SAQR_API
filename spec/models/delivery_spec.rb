@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 require 'fixtures/seed_hash'
 
@@ -17,7 +19,6 @@ RSpec.describe Delivery, type: :model do
 
       expect(durations_check).to be_truthy
     end
-
   end
 
   describe '#the_population?' do
@@ -26,5 +27,4 @@ RSpec.describe Delivery, type: :model do
       expect(Delivery.the_population?(duration_size)).to be_truthy
     end
   end
-
 end

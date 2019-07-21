@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Trucks' Controller
 class TrucksController < ApplicationController
   before_action :set_truck, only: %i[show update destroy]
 
@@ -39,6 +42,7 @@ class TrucksController < ApplicationController
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_truck
     @truck = Truck.find(params[:id])

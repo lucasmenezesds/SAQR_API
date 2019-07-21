@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 require 'seed_generator/seed_models/storage_time_seed'
 require 'support/matchers'
-
 
 describe StorageTimeSeed do
   let(:storage_time) do

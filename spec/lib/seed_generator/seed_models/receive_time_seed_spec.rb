@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 require 'seed_generator/seed_models/receive_time_seed'
 require 'support/matchers'
-
 
 describe ReceiveTimeSeed do
   let(:receive_time) do
