@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe GetDeliveryProbabilitiesController, type: :controller do
+RSpec.describe DeliveryProbabilitiesController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # GetDeliveryProbability. As you add validations to GetDeliveryProbability, be sure to
   # adjust the attributes here as well.
@@ -16,7 +16,7 @@ RSpec.describe GetDeliveryProbabilitiesController, type: :controller do
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
-  # GetDeliveryProbabilitiesController. Be sure to keep this updated too.
+  # DeliveryProbabilitiesController. Be sure to keep this updated too.
   let(:valid_session) { { headers: { ACCEPT: 'application/vnd.api+json' } } }
 
   describe 'GET #index' do

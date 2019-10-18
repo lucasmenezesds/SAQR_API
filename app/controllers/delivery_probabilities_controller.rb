@@ -4,10 +4,10 @@ require_relative '../../app/models/delivery'
 
 # Controller for the enpoint responsible to return the Deliveries Probabilities
 # rubocop:disable Naming/AccessorMethodName
-class GetDeliveryProbabilitiesController < ApplicationController
+class DeliveryProbabilitiesController < ApplicationController
   # before_action :set_get_delivery_probability, only: %i[show update destroy]
 
-  # GET /get_delivery_probabilities
+  # GET /delivery_probabilities
   def index
     set_get_data_to_process
     json_to_return = {}
@@ -38,7 +38,7 @@ class GetDeliveryProbabilitiesController < ApplicationController
   # end
 
   #   Only allow a trusted parameter "white list" through.
-  def get_delivery_probability_params
+  def delivery_probability_params
     params.require(%i[origin_city destination_city])
   end
 
@@ -71,10 +71,10 @@ end
 # STASHED
 # require_relative '../../app/models/delivery'
 #
-# class GetDeliveryProbabilitiesController < ApplicationController
+# class DeliveryProbabilitiesController < ApplicationController
 #   # before_action :set_get_delivery_probability, only: %i[show update destroy]
 #
-#   # GET /get_delivery_probabilities
+#   # GET /delivery_probabilities
 #   def index
 #     set_get_data_to_process
 #     data_from_db = get_array_of_ids_from_tables_to_process
@@ -85,7 +85,7 @@ end
 #   private
 #
 #   def set_get_data_to_process
-#     get_delivery_probabilities_params
+#     delivery_probabilities_params
 #     @origin_city               = params.fetch :origin_city
 #     @destination_city          = params.fetch :destination_city
 #     @number_of_tests           = params.fetch :number_of_tests, 1000
@@ -103,12 +103,12 @@ end
 #   # end
 #
 #   #   Only allow a trusted parameter "white list" through.
-#   def get_delivery_probabilities_params
+#   def delivery_probabilities_params
 #     params.require(%i[origin_city destination_city])
 #   end
 #
 #   def get_array_of_ids_from_tables_to_process
-#     hash_result                             = Delivery.get_steps_ids_based_on_city_deliveries @origin_city, @destination_city
+#     hash_result                             = Delivery.steps_ids_based_on_city_deliveries @origin_city, @destination_city
 #     data_from_db                            = {}
 #     data_from_db['picking_time_ids']        = hash_result.fetch :picking_time_id, default: []
 #     data_from_db['load_time_ids']           = hash_result.fetch :load_time_id, default: []
