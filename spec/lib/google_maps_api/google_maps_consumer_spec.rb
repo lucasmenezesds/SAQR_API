@@ -7,10 +7,10 @@ describe GoogleMapsConsumer do
     described_class.new('Uberlândia', 'São Paulo', 10)
   end
 
-  describe '#get_city_distances' do
+  describe '#cities_distances' do
     it 'should return 591239 for Uberlandia and Sao Paulo' do
       expected_distance = 591_239
-      received_distance = maps_consumer.get_city_distances('Uberlandia', 'Sao Paulo', 10)
+      received_distance = maps_consumer.cities_distances('Uberlandia', 'Sao Paulo', 10)
 
       expect(expected_distance).to equal(received_distance)
     end

@@ -7,7 +7,7 @@ require 'rails_helper'
 
 describe DeliverySeed do
   let(:seeds_hash) do
-    get_seed_hash
+    seed_hash
   end
 
   let(:delivery) do

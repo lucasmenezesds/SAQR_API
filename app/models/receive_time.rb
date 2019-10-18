@@ -4,5 +4,5 @@
 class ReceiveTime < ApplicationRecord
   has_one :delivery
 
-  def self.get_durations_time_based_on_ids_list(ids_array); end
+  def self.durations_time_based_on_ids_list(ids_array); end
 end

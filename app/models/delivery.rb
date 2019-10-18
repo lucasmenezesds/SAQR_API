@@ -9,7 +9,7 @@ class Delivery < ApplicationRecord
   belongs_to :storage_time
   has_many :cargos
 
-  def self.get_duration_times(city1, city2)
+  def self.duration_times(city1, city2)
     Delivery.joins(:transportation_time)
             .where("origin_city_id=#{city1} and destination_city_id=#{city2}
                or origin_city_id=#{city2} and destination_city_id=#{city1}")

@@ -8,9 +8,9 @@ class GoogleMapsConsumer
     @current_request_number = current_request_number
   end
 
-  def get_city_distances(origin_city = @origin_city_name,
-                         destination_city = @destination_city_name,
-                         _current_req_number = @current_request_number)
+  def cities_distances(origin_city = @origin_city_name,
+                       destination_city = @destination_city_name,
+                       _current_req_number = @current_request_number)
 
     # TODO: Develop the API consumer, did just to keep developing
     # the seed for generator now

@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 # rubocop:disable Metrics/MethodLength
-# rubocop:disable Naming/AccessorMethodName
-def get_seed_hash
+def seed_hash
   seeds_hash = {}
   seeds_hash['picking_time'] = PickingTime.new(duration_time: 3185,
                                                start_time: '2001-10-08 17:59:15',
@@ -43,4 +42,3 @@ def get_seed_hash
 end
 
 # rubocop:enable Metrics/MethodLength
-# rubocop:enable Naming/AccessorMethodName

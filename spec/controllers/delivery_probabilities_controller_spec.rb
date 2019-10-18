@@ -26,7 +26,7 @@ RSpec.describe DeliveryProbabilitiesController, type: :controller do
     before(:each) do
       request.headers.merge! headers_obj
       allow(Delivery)
-        .to receive(:get_duration_times)
+        .to receive(:duration_times)
         .and_return([1, 2, 3, 4])
     end
 
