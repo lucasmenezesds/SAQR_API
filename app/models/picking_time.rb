@@ -6,6 +6,7 @@ class PickingTime < ApplicationRecord
 
   def self.duration_times_based_on_deliveries; end
 
+  # TODO: Review - Brainstorm
   # STASHED \/
   # #
   # def self.get_durations_time_based_on_ids_list1(ids_array)
