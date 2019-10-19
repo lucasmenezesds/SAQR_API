@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# TransportationTimes' Controller
 class TransportationTimesController < ApplicationController
   before_action :set_transportation_time, only: %i[show update destroy]
 
@@ -48,6 +51,8 @@ class TransportationTimesController < ApplicationController
   # Only allow a trusted parameter "white list" through.
   def transportation_time_params
     ActiveModelSerializers::Deserialization.jsonapi_parse(params,
-                                                          only: %i[duration_time event transportation_date origin_city destination_city])
+                                                          only: %i[duration_time event
+                                                                   transportation_date
+                                                                   origin_city destination_city])
   end
 end

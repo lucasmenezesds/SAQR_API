@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe GetDeliveryProbabilitiesController, type: :controller do
+RSpec.describe DeliveryProbabilitiesController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # GetDeliveryProbability. As you add validations to GetDeliveryProbability, be sure to
   # adjust the attributes here as well.
@@ -14,7 +16,7 @@ RSpec.describe GetDeliveryProbabilitiesController, type: :controller do
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
-  # GetDeliveryProbabilitiesController. Be sure to keep this updated too.
+  # DeliveryProbabilitiesController. Be sure to keep this updated too.
   let(:valid_session) { { headers: { ACCEPT: 'application/vnd.api+json' } } }
 
   describe 'GET #index' do
@@ -24,8 +26,8 @@ RSpec.describe GetDeliveryProbabilitiesController, type: :controller do
     before(:each) do
       request.headers.merge! headers_obj
       allow(Delivery)
-        .to receive(:get_duration_times)
-              .and_return([1, 2, 3, 4])
+        .to receive(:duration_times)
+        .and_return([1, 2, 3, 4])
     end
 
     it 'should return a success response' do
@@ -34,9 +36,9 @@ RSpec.describe GetDeliveryProbabilitiesController, type: :controller do
     end
 
     it 'should return an error if the required params are missing' do
-      expect {
+      expect do
         get :index, params: {}, session: valid_session
-      }.to raise_error(message = 'param is missing or the value is empty: origin_city')
+      end.to raise_error('param is missing or the value is empty: origin_city')
     end
 
     it 'should return an hash' do

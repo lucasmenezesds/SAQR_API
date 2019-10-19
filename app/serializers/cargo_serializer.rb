@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Serializer for the Cargo
 class CargoSerializer < ActiveModel::Serializer
   attributes :id
 

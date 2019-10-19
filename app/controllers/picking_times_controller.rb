@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# PickingTimes' Controller
 class PickingTimesController < ApplicationController
   before_action :set_picking_time, only: %i[show update destroy]
 
@@ -39,6 +42,7 @@ class PickingTimesController < ApplicationController
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_picking_time
     @picking_time = PickingTime.find(params[:id])
@@ -46,6 +50,8 @@ class PickingTimesController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def picking_time_params
-    ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: %i[duration_time start_time number_of_items number_of_items_type picking_date])
+    ActiveModelSerializers::Deserialization.jsonapi_parse(params,
+                                                          only: %i[duration_time start_time
+                                                                   number_of_items number_of_items_type picking_date])
   end
 end

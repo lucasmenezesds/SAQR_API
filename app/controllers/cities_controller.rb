@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Cities Controller
 class CitiesController < ApplicationController
   before_action :set_city, only: %i[show update destroy]
 
@@ -39,6 +42,7 @@ class CitiesController < ApplicationController
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_city
     @city = City.find(params[:id])

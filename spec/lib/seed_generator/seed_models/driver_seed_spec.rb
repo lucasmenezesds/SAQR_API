@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 require 'seed_generator/seed_models/driver_seed'
 require 'support/matchers'
-
 
 describe DriverSeed do
   let(:driver) do
@@ -26,7 +27,6 @@ describe DriverSeed do
       include_examples 'returned hash should have the key', :name, String
       include_examples 'returned hash should have the key', :age, Integer
       include_examples 'returned hash should have the key', :contact, String
-
     end
   end
 end

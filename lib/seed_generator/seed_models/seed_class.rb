@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 require 'faker'
 require 'active_support/core_ext/numeric/time'
 
 Faker::Config.locale = 'pt-BR'
-
 
 # Parent Class for the Models Seed Generator
 class SeedClass

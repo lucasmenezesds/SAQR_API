@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 require 'fixtures/seed_hash'
 
 RSpec.describe Delivery, type: :model do
   before(:all) do
-    @delivery = described_class.new(get_seed_hash)
-    @durations = Delivery.get_duration_times(1, 2)
+    @delivery = described_class.new(seed_hash)
+    @durations = Delivery.duration_times(1, 2)
   end
 
-  describe '#get_duration_times' do
+  describe '#duration_times' do
     it 'should return an array' do
       expect(@durations).to be_a_kind_of(Array)
     end
@@ -17,7 +19,6 @@ RSpec.describe Delivery, type: :model do
 
       expect(durations_check).to be_truthy
     end
-
   end
 
   describe '#the_population?' do
@@ -26,5 +27,4 @@ RSpec.describe Delivery, type: :model do
       expect(Delivery.the_population?(duration_size)).to be_truthy
     end
   end
-
 end

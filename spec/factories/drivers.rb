@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :driver do
-    name { "MyString" }
+    name { 'MyString' }
     age { 1 }
-    contact { "MyString" }
+    contact { 'MyString' }
   end
 end
