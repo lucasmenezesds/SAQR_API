@@ -41,8 +41,9 @@ class DeliveryProbabilitiesController < ApplicationController
     params.require(%i[origin_city destination_city])
   end
 
-  # TODO DELIVERY STEPS
+  # TODO: DELIVERY STEPS
   #
+  # # rubocop:disable Metrics/LineLength
   # picking
   # loading
   # transportation
@@ -79,4 +80,5 @@ class DeliveryProbabilitiesController < ApplicationController
   #     ids_lists['receive_time_ids']        = ReceiveTime.durations_time_based_on_ids_list(ids_hash['receive_time_ids'] ||= [])
   #     ids_lists['storage_time_ids']        = StorageTime.durations_time_based_on_ids_list(ids_hash['storage_time_ids'] ||= [])
   #   end
+  # # rubocop:enable Metrics/LineLength
 end
