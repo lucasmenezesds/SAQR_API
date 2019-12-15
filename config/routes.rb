@@ -11,6 +11,4 @@ Rails.application.routes.draw do
   resources :trucks
   resources :drivers
 
-  resources :delivery_probabilities, only: %i[index]
-
 end
