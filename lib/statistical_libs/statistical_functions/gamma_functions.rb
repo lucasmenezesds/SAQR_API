@@ -7,7 +7,7 @@ require_relative '../statistical_methods'
 
 # Module for methods of Gamma functions and it derivatives
 module GammaFunctions
-  # rubocop:disable Naming/UncommunicativeMethodParamName
+  # rubocop: disable Naming/MethodParameterName
   def self.calculate_alfa_for_mle(a0, mle_data)
     new_a0 = a0
     loop do
@@ -20,6 +20,8 @@ module GammaFunctions
     end
     new_a0
   end
+
+  # rubocop: enable Naming/MethodParameterName
 
   # Calculate the Maximum Likelihood Estimation for Exponential Distribution
   def self.calculate_mle(received_sample)
@@ -49,4 +51,3 @@ module GammaFunctions
     "Something went wrong during the calculation GammaFunctions#calculate_mle, Error: #{e}"
   end
 end
-# rubocop:enable Naming/UncommunicativeMethodParamName

@@ -70,6 +70,9 @@ group :development do
 
   gem 'guard-rspec', require: false
   gem 'rubycritic', require: false
+  gem 'rubocop', '~> 0.77.0'
+  gem 'spreadsheet', '~>1.1.1', require: false
+  gem 'mechanize', '~>2.7.5', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
