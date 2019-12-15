@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # require 'lib/utils/csv_parser'
 require_relative '../../../lib/utils/csv_parser'
 

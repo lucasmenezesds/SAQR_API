@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Deliveries' Controller
 class DeliveriesController < ApplicationController
   before_action :set_delivery, only: %i[show update destroy]
 
@@ -39,6 +42,7 @@ class DeliveriesController < ApplicationController
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_delivery
     @delivery = Delivery.find(params[:id])
@@ -46,6 +50,9 @@ class DeliveriesController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def delivery_params
-    ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: %i[picking_time load_time transportation_time receive_time storage_time delivery_date])
+    ActiveModelSerializers::Deserialization.jsonapi_parse(params,
+                                                          only: %i[picking_time load_time
+                                                                   transportation_time receive_time
+                                                                   storage_time delivery_date])
   end
 end

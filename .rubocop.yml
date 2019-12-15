@@ -1,5 +1,28 @@
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'vendor/**/*'
+    - 'config.ru'
+    - 'Gemfile'
+    - 'Guardfile'
+    - 'spec/rails_helper.rb'
+    - 'spec/spec_helper.rb'
+  DisplayCopNames: true
+  TargetRubyVersion: 2.5
+
 Metrics/BlockLength:
-  ExcludedMethods: ['describe', 'context']
+  CountComments: true  # count full line comments?
+  Max: 25
+  ExcludedMethods: []
+  Exclude:
+    - "spec/**/*"
+
+Metrics/LineLength:
+  Description: 'Limit lines to 80 characters.'
+  Max: 120
+  IgnoredPatterns: ['\A#']
 
 Style/DateTime:
   Enabled: false

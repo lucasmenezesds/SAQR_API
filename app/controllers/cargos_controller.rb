@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Cargo's Controller
 class CargosController < ApplicationController
   before_action :set_cargo, only: %i[show update destroy]
 

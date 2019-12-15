@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'seed_generator/seed_models/transportation_time_seed'
 require 'support/matchers'
 
@@ -41,7 +43,6 @@ describe TransportationTimeSeed do
         expect(transportation_time_hash).not_to have_key('id')
       end
     end
-
 
     context 'when the I receive the returned hash expecting the key' do
       include_examples 'returned hash should have the key', :id, Integer

@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 require 'seed_generator/seed_models/picking_time_seed'
 require 'support/matchers'
-
 
 describe PickingTimeSeed do
   let(:picking_time) do

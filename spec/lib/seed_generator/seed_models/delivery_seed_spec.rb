@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'seed_generator/seed_models/delivery_seed'
 require 'fixtures/seed_hash'
 require 'support/matchers'
@@ -5,7 +7,7 @@ require 'rails_helper'
 
 describe DeliverySeed do
   let(:seeds_hash) do
-    get_seed_hash
+    seed_hash
   end
 
   let(:delivery) do
@@ -60,7 +62,6 @@ describe DeliverySeed do
       include_examples 'returned hash should have the key', :storage_time_id, StorageTime
       include_examples 'returned hash should have the key', :delivery_date, DateTime
       include_examples 'returned hash should have the key', :total_duration, Integer
-
     end
   end
   context 'when I call the method on DeliverySeed Class' do
@@ -76,7 +77,7 @@ describe DeliverySeed do
     end
     describe '#sum_durations' do
       it 'should return the value 13601' do
-        expect(delivery.sum_durations).to eql(13601)
+        expect(delivery.sum_durations).to eql(13_601)
       end
     end
   end

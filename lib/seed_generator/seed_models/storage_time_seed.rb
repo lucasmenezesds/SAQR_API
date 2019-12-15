@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 require_relative 'seed_class'
 
 # StorageTimes Model Seed Generator
 class StorageTimeSeed < SeedClass
-
   def initialize(received_datetime, current_id = nil)
     @id = current_id
     @duration_time = generate_time(1800, 3800) # TODO: CHECK VALUES
@@ -14,5 +15,4 @@ class StorageTimeSeed < SeedClass
   def final_timestamp
     @start_time + @duration_time.seconds
   end
-
 end

@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Serializer for Delivery
 class DeliverySerializer < ActiveModel::Serializer
   attributes :id, :delivery_date
 

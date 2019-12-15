@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'seed_generator/seed_models/load_time_seed'
 require 'support/matchers'
 
