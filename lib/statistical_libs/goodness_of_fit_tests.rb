@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../lib/utils/functions_auxiliaries'
+require_relative '../../lib/utils/auxiliary_functions'
 require_relative '../../lib/statistical_libs/statistical_functions/exponential_functions'
 require_relative '../../lib/statistical_libs/statistical_methods'
 require_relative '../../lib/statistical_libs/kolmogorov_smirnov_steps'
@@ -21,7 +21,7 @@ class GoodnessOfFitTests
     empirical_cdf_array = empirical_cdf['y_values'].sort
     puts "Distribution => #{distribution_name}"
 
-    function_class_name = FunctionsAuxiliaries.get_statistical_function_class distribution_name
+    function_class_name = AuxiliaryFunctions.get_statistical_function_class distribution_name
     function_class = function_class_name.new
 
     theoretical_exponential_cdf = function_class.generate_theoretical_cdf sample_to_process

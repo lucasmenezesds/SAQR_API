@@ -4,7 +4,7 @@ require 'active_support/core_ext/string/inflections'
 require_relative '../../lib/statistical_libs/statistical_functions/exponential_functions'
 
 # Auxiliary functions for Statistical Functions
-module FunctionsAuxiliaries
+module AuxiliaryFunctions
   def self.get_statistical_function_class(function_name)
     existing_functions = %w[exponential lognormal gamma weibull]
     if (function_name.class == String) && existing_functions.include?(function_name.downcase)

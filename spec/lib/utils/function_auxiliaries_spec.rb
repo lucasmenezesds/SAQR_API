@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative '../../../lib/utils/functions_auxiliaries'
+require_relative '../../../lib/utils/auxiliary_functions'
 
-describe FunctionsAuxiliaries do
+describe AuxiliaryFunctions do
   describe '#get_statistical_function_class' do
     let(:func_aux, &method(:described_class))
 

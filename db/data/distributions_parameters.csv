@@ -6,3 +6,6 @@ sigma,∑,true,summation
 beta,β,true,regression coefficient of a population
 theta,θ,false,general population parameter
 zeta,Ζ,true,standard normal variable in a PDF the function
+a,a,false,variable A (usually for shape)
+b,b,false,variable B (usually for scale)
+x,x,false,variable X (usually for percentile)
