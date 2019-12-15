@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../../../lib/utils/numo_and_array_utils'
 
 describe 'NumoArrayUtils' do

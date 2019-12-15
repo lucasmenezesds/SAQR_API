@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 require_relative '../../lib/utils/numo_and_array_utils'
 
 # Class that contains  all generic statistical methods
 module StatisticalMethods
-
   # Empiric CDF based on received data array
   def self.calculate_ecdf(array_of_numbers)
     final_result          = {}

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../../lib/utils/functions_auxiliaries'
 require_relative '../../lib/statistical_libs/statistical_functions/exponential_functions'
 require_relative '../../lib/statistical_libs/statistical_methods'
@@ -14,7 +16,6 @@ class GoodnessOfFitTests
   end
 
   def kolmogorov_smirnov_test(sample_to_process = @sample_to_process, distribution_name = @distribution_name)
-
     empirical_cdf = StatisticalMethods.calculate_ecdf sample_to_process
 
     empirical_cdf_array = empirical_cdf['y_values'].sort
@@ -36,5 +37,4 @@ class GoodnessOfFitTests
   # def chi_square_test
   #   false
   # end
-
 end

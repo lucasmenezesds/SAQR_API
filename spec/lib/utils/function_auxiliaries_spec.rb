@@ -1,5 +1,6 @@
-require_relative '../../../lib/utils/functions_auxiliaries'
+# frozen_string_literal: true
 
+require_relative '../../../lib/utils/functions_auxiliaries'
 
 describe FunctionsAuxiliaries do
   describe '#get_statistical_function_class' do
@@ -14,7 +15,6 @@ describe FunctionsAuxiliaries do
       expect { func_aux.get_statistical_function_class 321 }.to(
         raise_error(ArgumentError, 'Check #get_statistical_function_class condition: The name passed as parameter is invalid')
       )
-
     end
 
     it 'should throw an error when the function name doesnt exist' do

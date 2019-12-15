@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 require 'numo/narray'
 require 'numo/gsl'
-
 
 # Class responsible for runing the statistical tests
 class StatisticalTests

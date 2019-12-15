@@ -30,8 +30,6 @@ class DbSeedGenerator
     prepare_delivery_hash
   end
 
-  # rubocop:disable Metrics/AbcSize
-  # rubocop:disable Metrics/MethodLength
   def populate
     puts '[START] Populating with DbSeedGenerator'
     create_driver_and_trucks
@@ -55,9 +53,6 @@ class DbSeedGenerator
     bulk_insertion
     puts "[DONE] Populating is over, the total of Deliveries are: #{Delivery.count}"
   end
-
-  # rubocop:enable Metrics/AbcSize
-  # rubocop:enable Metrics/MethodLength
 
   private
 

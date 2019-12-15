@@ -1,12 +1,12 @@
+# frozen_string_literal: true
+
 require_relative '../../../lib/statistical_libs/statistical_methods'
 require_relative '../../../spec/fixtures/lib/statistical_libs/general_mocks'
 require_relative '../../../spec/fixtures/lib/statistical_libs/exponential_functions_mocks'
 
 describe StatisticalMethods do
-
   let(:statistical_methods, &method(:described_class))
   let(:sample, &method(:set_general_sample))
-
 
   describe '#calculate_ecdf' do
     let(:calculated_ecdf) { statistical_methods.calculate_ecdf(sample) }
@@ -40,7 +40,6 @@ describe StatisticalMethods do
                          9.632269206115012, 9.376786579611847, 8.557951183888406, 9.579003173560242,
                          10.38523445880145, 9.946547041996576, 9.128479345495862, 8.570923513837204,
                          9.050992878742049, 10.09286747369753, 10.482317559395355, 9.55895290182487]
-
 
       result = statistical_methods.get_natural_logarithm_array sample
       expect(result).to match_array(expected_result)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'distribution'
 require 'numo/gsl'
 
@@ -80,5 +82,4 @@ class ExponentialFunctions
   #
   #   rng.call
   # end
-
 end

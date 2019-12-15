@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../../../lib/statistics_tests/statistical_tests'
 
 describe StatisticalTests do
@@ -16,5 +18,4 @@ describe StatisticalTests do
   #     # expect(expected_distance).to equal(received_distance)
   #   end
   # end
-
 end
