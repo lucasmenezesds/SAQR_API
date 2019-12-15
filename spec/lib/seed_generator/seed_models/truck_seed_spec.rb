@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 require 'seed_generator/seed_models/truck_seed'
 require 'support/matchers'
-
 
 describe TruckSeed do
   let(:truck) do
@@ -25,7 +26,6 @@ describe TruckSeed do
     context 'when the I receive the returned hash expecting the key' do
       include_examples 'returned hash should have the key', :driver_id, Integer
       include_examples 'returned hash should have the key', :model, String
-
     end
   end
 end

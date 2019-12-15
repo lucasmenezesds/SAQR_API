@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CustomMatchers
   RSpec::Matchers.define :be_a_kind_of_boolean do
     match do |actual|

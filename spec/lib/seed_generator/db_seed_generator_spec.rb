@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 require 'seed_generator/db_seed_generator'
 require 'support/matchers'

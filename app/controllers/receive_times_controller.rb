@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# ReceiveTimes' Controller
 class ReceiveTimesController < ApplicationController
   before_action :set_receive_time, only: %i[show update destroy]
 
@@ -39,6 +42,7 @@ class ReceiveTimesController < ApplicationController
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_receive_time
     @receive_time = ReceiveTime.find(params[:id])
@@ -46,6 +50,7 @@ class ReceiveTimesController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def receive_time_params
-    ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: %i[duration_time start_time event received_date])
+    ActiveModelSerializers::Deserialization.jsonapi_parse(params,
+                                                          only: %i[duration_time start_time event received_date])
   end
 end

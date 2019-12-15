@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# LoadTimes' Controller
 class LoadTimesController < ApplicationController
   before_action :set_load_time, only: %i[show update destroy]
 
@@ -39,6 +42,7 @@ class LoadTimesController < ApplicationController
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_load_time
     @load_time = LoadTime.find(params[:id])

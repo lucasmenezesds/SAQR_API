@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'seed_generator/seed_models/cargo_seed'
 require 'support/matchers'
 

@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Serializer for the TranposrtaitonTimes
 class TransportationTimeSerializer < ActiveModel::Serializer
   attributes :id, :duration_time, :event, :transportation_date
 

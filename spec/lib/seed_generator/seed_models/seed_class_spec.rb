@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 require 'active_support'
 require 'active_support/core_ext/numeric/time'
 require 'seed_generator/seed_models/seed_class'
 require 'support/matchers'
-
 
 describe SeedClass do
   let(:seed_class) do
     described_class.new
   end
 
+  # rubocop:disable Metrics/LineLength
   shared_examples 'shared example add_time with valid params' do |expected_datetime, received_datetime, generated_time, time_type|
     it "should return the received date plus #{generated_time} #{time_type}" do
       allow(seed_class)
@@ -20,6 +22,7 @@ describe SeedClass do
       expect(expected_datetime).to eql(final_date_time)
     end
   end
+  # rubocop:enable Metrics/LineLength
 
   shared_examples 'add_time shared example with invalid params' do |received_datetime, generated_time, time_type|
     it 'should return the received date without changes' do
@@ -59,8 +62,8 @@ describe SeedClass do
   describe '#add_time' do
     date_time = DateTime.new(2010, 10, 25, 10, 35, 20, '-03:00')
     context 'when I call add_time passing valid params' do
-      expected_date_10secs = date_time + 10.seconds
-      expected_date_10min = date_time + 10.minutes
+      expected_date_10secs  = date_time + 10.seconds
+      expected_date_10min   = date_time + 10.minutes
       expected_date_10hours = date_time + 10.hours
       include_examples 'shared example add_time with valid params', expected_date_10secs, date_time, 10, 'seconds'
       include_examples 'shared example add_time with valid params', expected_date_10min, date_time, 10, 'minutes'

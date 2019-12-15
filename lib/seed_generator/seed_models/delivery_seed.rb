@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'seed_class'
 
 # Deliveries Model Seed Generator
@@ -41,4 +43,3 @@ class DeliverySeed < SeedClass
 
   alias delivery_date delivery_time
 end
-
