@@ -1,0 +1,8 @@
+name,symbol,uppercase,meaning
+alpha,α,false,significance level in hypothesis test
+mu,μ,false,mean of a population
+sigma,σ,false,standard deviation of a population
+sigma,∑,true,summation
+beta,β,true,regression coefficient of a population
+theta,θ,false,general population parameter
+zeta,Ζ,true,standard normal variable in a PDF the function
