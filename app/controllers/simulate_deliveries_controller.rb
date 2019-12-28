@@ -1,17 +1,20 @@
+# frozen_string_literal: true
+
+# Controller that will receive the data to create the simulation
 class SimulateDeliveriesController < ApplicationController
-  before_action :set_simulate_delivery, only: [:show, :update, :destroy]
+  before_action :set_simulate_delivery, only: %i[show update destroy]
 
   # GET /simulate_deliveries
-  #def index
+  # def index
   #  @simulate_deliveries = SimulateDelivery.all
   #
   #  render json: @simulate_deliveries
-  #end
+  # end
 
   # GET /simulate_deliveries/1
-  #def show
+  # def show
   #  render json: @simulate_delivery
-  #end
+  # end
 
   # POST /simulate_deliveries
   def create
@@ -23,18 +26,18 @@ class SimulateDeliveriesController < ApplicationController
   end
 
   # PATCH/PUT /simulate_deliveries/1
-  #def update
+  # def update
   #  if @simulate_delivery.update(simulate_delivery_params)
   #    render json: @simulate_delivery
   #  else
   #    render json: @simulate_delivery.errors, status: :unprocessable_entity
   #  end
-  #end
+  # end
 
   # DELETE /simulate_deliveries/1
-  #def destroy
+  # def destroy
   #  @simulate_delivery.destroy
-  #end
+  # end
 
   private
 
@@ -45,10 +48,11 @@ class SimulateDeliveriesController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def simulate_delivery_params
-    params.require(:data).permit(:number_of_simulations, :number_of_samples, steps: [:delivery_step, distribution_method: [:name, parameters: %i[name value uppercase]]]).tap do |pqp|
-      pqp.require(:number_of_simulations)
-      pqp.require(:number_of_samples)
-      pqp.require(:steps)
+    params.require(:data).permit(:number_of_simulations, :number_of_samples,
+                                 steps: [:delivery_step, distribution_method: [:name, parameters: %i[name value uppercase]]]).tap do |inner_params|
+      inner_params.require(:number_of_simulations)
+      inner_params.require(:number_of_samples)
+      inner_params.require(:steps)
     end
   end
 end

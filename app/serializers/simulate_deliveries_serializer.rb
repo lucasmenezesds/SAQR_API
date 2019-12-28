@@ -7,5 +7,4 @@ class SimulateDeliverySerializer < ActiveModel::Serializer
              :distribution_method,
              :name,
              :parameters
-
 end

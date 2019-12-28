@@ -76,8 +76,6 @@ class DbSeedGenerator
     @models_array['cargo'] << cargo.to_hash
   end
 
-  # rubocop:disable Metrics/AbcSize
-  # rubocop:disable Metrics/MethodLength
   def create_delivery_data_dependencies(delivery_hash, current_id)
     date = delivery_hash['delivery_date']
 
@@ -113,9 +111,6 @@ class DbSeedGenerator
 
     delivery_hash
   end
-
-  # rubocop:enable Metrics/AbcSize
-  # rubocop:enable Metrics/MethodLength
 
   def create_delivery_data(rec_delivery_hash, current_id)
     delivery_hash                  = create_delivery_data_dependencies(rec_delivery_hash, current_id)
