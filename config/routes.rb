@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   resources :picking_times
   resources :trucks
   resources :drivers
-
+  resources :simulate_deliveries, only: [:create]
 end
