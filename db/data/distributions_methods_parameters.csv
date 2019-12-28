@@ -2,7 +2,7 @@ method_name,parameter_name,uppercase
 exponential,mu,false
 lognormal,zeta,true
 lognormal,sigma,false
-gamma,a,false
-gamma,b,false
-weibull,a,false
-weibull,b,false
+gamma,alpha,false
+gamma,beta,false
+weibull,alpha,false
+weibull,beta,false

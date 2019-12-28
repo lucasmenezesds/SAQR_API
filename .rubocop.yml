@@ -1,4 +1,4 @@
-AllCops:
+,AllCops:
   Exclude:
     - 'db/**/*'
     - 'bin/**/*'
@@ -13,10 +13,10 @@ AllCops:
   TargetRubyVersion: 2.5
 
 Metrics/MethodLength:
-  Max: 20
+  Max: 40
 
 Metrics/AbcSize:
-  Max: 30
+  Max: 40
 
 Metrics/BlockLength:
   CountComments: true  # count full line comments?

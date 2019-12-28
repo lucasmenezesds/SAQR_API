@@ -2,5 +2,7 @@
 
 # JSON Serializer
 class DistributionMethodSerializer < ActiveModel::Serializer
-  attributes :id, :name, :short_name
+  attribute :id, key: :key
+  attribute :short_name, key: :value
+  attribute :name, key: :text
 end
