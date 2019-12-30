@@ -8,7 +8,7 @@ require 'numo/narray'
 def convert_array_to_narray(received_array)
   raise StandardError, 'Its seems like its not an array!' if received_array.class != Array
 
-  Numo::DFloat.new(received_array)
+  Numo::DFloat.cast(received_array)
 rescue StandardError => e
   raise "Check the array condition: #{e}"
 end
