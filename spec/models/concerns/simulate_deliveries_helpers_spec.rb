@@ -30,4 +30,12 @@ describe SimulateDeliveriesHelpers do
       end
     end
   end
+
+  describe '#simulations_statistical_data' do
+    it 'should return an hash containing the data and statistical information' do
+      result = SimulateDeliveriesHelpers.simulations_statistical_data(mean_for_generated_arrays)
+
+      expect(result).to eql(expected_statistical_data)
+    end
+  end
 end

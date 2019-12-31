@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 require_relative '../../../lib/statistical_libs/statistical_functions/random_numbers_generators'
+require_relative '../../../lib/utils/numo_narray_utils'
 
 # Helpers for the Simulate Deliveries endpoint
 module SimulateDeliveriesHelpers
-
   def self.calculate_mean_of_arrays_per_position(array_of_arrays)
     arrays_size = array_of_arrays.first.size
 
@@ -48,5 +48,11 @@ module SimulateDeliveriesHelpers
     end
 
     calculate_mean_of_arrays_per_position(final_arrays)
+  end
+
+  def self.simulations_statistical_data(simulated_data)
+    narray_data = NumoNarrayUtils.get_numo_array_data simulated_data
+    narray_data[:data] = simulated_data
+    narray_data
   end
 end
