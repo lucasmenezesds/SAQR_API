@@ -3,7 +3,7 @@
 require 'numo/narray'
 require 'numo/gsl'
 require 'statsample'
-require_relative '../../lib/utils/numo_and_array_utils'
+require_relative '../../lib/utils/numo_narray_utils'
 
 # Class
 class KolmogorovSmirnovSteps

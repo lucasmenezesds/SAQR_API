@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../lib/utils/numo_and_array_utils'
+require_relative '../../lib/utils/numo_narray_utils'
 
 # Class that contains  all generic statistical methods
 module StatisticalMethods
@@ -11,7 +11,10 @@ module StatisticalMethods
     raw_data_size         = raw_data.size
     array_of_uniq_numbers = array_of_numbers.uniq
 
-    min, max, size = get_numo_array_data array_of_uniq_numbers
+    narray_data = NumoNarrayUtils.get_numo_array_data array_of_uniq_numbers
+    min = narray_data.fetch(:min_value)
+    max = narray_data.fetch(:max_value)
+    size = narray_data.fetch(:data_size)
 
     x_values                 = Numo::DFloat.linspace(min, max, size)
     final_result['x_values'] = x_values.to_a
