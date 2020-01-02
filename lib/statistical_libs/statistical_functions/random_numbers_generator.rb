@@ -4,7 +4,7 @@ require 'numo/gsl'
 require 'securerandom'
 
 # Module to Generate Number based on a distribution
-module RandomNumbersGenerators
+module RandomNumbersGenerator
   def self.random_number
     SecureRandom.random_number(999_999_999_999)
   end

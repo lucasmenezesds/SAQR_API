@@ -1,10 +1,13 @@
 # frozen_string_literal: true
 
-require_relative '../../../lib/statistical_libs/statistical_functions/random_numbers_generators'
-require_relative '../../../lib/utils/numo_narray_utils'
+require 'statistical_libs/statistical_functions/random_numbers_generator'
+require 'utils/numo_narray_utils'
 
 # Helpers for the Simulate Deliveries endpoint
 module SimulateDeliveriesHelpers
+  include RandomNumbersGenerator
+  include NumoNarrayUtils
+
   def self.calculate_mean_of_arrays_per_position(array_of_arrays)
     arrays_size = array_of_arrays.first.size
 
@@ -37,7 +40,7 @@ module SimulateDeliveriesHelpers
 
       steps_mean = []
       number_of_simulations.times do
-        generated_samples = RandomNumbersGenerators.distribution_based_generation(number_of_samples, distribution_name, parameters_to_rng)
+        generated_samples = RandomNumbersGenerator.distribution_based_generation(number_of_samples, distribution_name, parameters_to_rng)
 
         sumup = generated_samples.sum * 1.0
         mean = sumup / number_of_samples.to_f
