@@ -18,11 +18,25 @@ class SimulateDeliveriesController < ApplicationController
 
   # POST /simulate_deliveries
   def create
-    @simulate_delivery = simulate_delivery_params
+    simulation_params = simulate_delivery_params
+    steps = simulation_params.fetch(:steps)
 
-    puts @simulate_delivery
+    number_of_samples = simulation_params.fetch(:number_of_samples)
+    number_of_simulations = simulation_params.fetch(:number_of_simulations)
+    label = simulation_params.fetch(:label, nil)
 
-    render json: @simulate_delivery, status: :created, location: @simulate_delivery
+    simulations_mean = SimulateDeliveriesHelpers.calculate_mean_for_steps(number_of_simulations, number_of_samples, steps)
+    simulation_data = SimulateDeliveriesHelpers.simulations_statistical_data(simulations_mean)
+    simulation_data[:number_of_samples] = number_of_samples
+    simulation_data[:number_of_simulations] = number_of_simulations
+
+    @simulate_delivery = SimulateDelivery.new(steps: steps, simulation_data: simulation_data, label: label)
+
+    if @simulate_delivery.save
+      render json: @simulate_delivery, status: :created, location: @simulate_deliveries
+    else
+      render json: @simulate_delivery.errors, status: :unprocessable_entity
+    end
   end
 
   # PATCH/PUT /simulate_deliveries/1
@@ -48,7 +62,7 @@ class SimulateDeliveriesController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def simulate_delivery_params
-    params.require(:data).permit(:number_of_simulations, :number_of_samples,
+    params.require(:data).permit(:number_of_simulations, :number_of_samples, :label,
                                  steps: [:delivery_step, distribution_method: [:name, parameters: %i[name value uppercase]]]).tap do |inner_params|
       inner_params.require(:number_of_simulations)
       inner_params.require(:number_of_samples)
