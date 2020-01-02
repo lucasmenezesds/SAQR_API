@@ -136,6 +136,35 @@ ALTER SEQUENCE public.cities_id_seq OWNED BY public.cities.id;
 
 
 --
+-- Name: transportation_times; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.transportation_times (
+    id bigint NOT NULL,
+    duration_time integer,
+    event boolean,
+    transportation_date timestamp without time zone,
+    origin_city_id bigint,
+    destination_city_id bigint,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    start_time timestamp without time zone,
+    distance integer
+);
+
+
+--
+-- Name: cities_list; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW public.cities_list AS
+ SELECT (ROW(transportation_times.origin_city_id, transportation_times.destination_city_id))::character varying AS "row",
+    count(*) AS count
+   FROM public.transportation_times
+  GROUP BY transportation_times.origin_city_id, transportation_times.destination_city_id;
+
+
+--
 -- Name: deliveries; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -417,6 +446,39 @@ CREATE TABLE public.schema_migrations (
 
 
 --
+-- Name: simulate_deliveries; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.simulate_deliveries (
+    id bigint NOT NULL,
+    label character varying,
+    simulation_data jsonb,
+    steps jsonb,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: simulate_deliveries_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.simulate_deliveries_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: simulate_deliveries_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.simulate_deliveries_id_seq OWNED BY public.simulate_deliveries.id;
+
+
+--
 -- Name: storage_times; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -448,24 +510,6 @@ CREATE SEQUENCE public.storage_times_id_seq
 --
 
 ALTER SEQUENCE public.storage_times_id_seq OWNED BY public.storage_times.id;
-
-
---
--- Name: transportation_times; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.transportation_times (
-    id bigint NOT NULL,
-    duration_time integer,
-    event boolean,
-    transportation_date timestamp without time zone,
-    origin_city_id bigint,
-    destination_city_id bigint,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    start_time timestamp without time zone,
-    distance integer
-);
 
 
 --
@@ -597,6 +641,13 @@ ALTER TABLE ONLY public.receive_times ALTER COLUMN id SET DEFAULT nextval('publi
 
 
 --
+-- Name: simulate_deliveries id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.simulate_deliveries ALTER COLUMN id SET DEFAULT nextval('public.simulate_deliveries_id_seq'::regclass);
+
+
+--
 -- Name: storage_times id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -719,6 +770,14 @@ ALTER TABLE ONLY public.receive_times
 
 ALTER TABLE ONLY public.schema_migrations
     ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: simulate_deliveries simulate_deliveries_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.simulate_deliveries
+    ADD CONSTRAINT simulate_deliveries_pkey PRIMARY KEY (id);
 
 
 --
@@ -992,6 +1051,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180616204541'),
 ('20191215200030'),
 ('20191215200031'),
-('20191215200034');
+('20191215200034'),
+('20200102035245');
 
 
