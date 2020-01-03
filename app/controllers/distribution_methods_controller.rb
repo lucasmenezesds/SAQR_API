@@ -8,7 +8,7 @@ class DistributionMethodsController < ApplicationController
   def index
     @distribution_methods = DistributionMethod.all
 
-    render json: @distribution_methods
+    render json: { data: ActiveModelSerializers::SerializableResource.new(@distribution_methods, adapter: :attributes) }
   end
 
   ## GET /distribution_methods/1

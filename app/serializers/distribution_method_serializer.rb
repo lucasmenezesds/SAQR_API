@@ -2,10 +2,9 @@
 
 # JSON Serializer
 class DistributionMethodSerializer < ActiveModel::Serializer
-
   attribute :id, key: :key
   attribute :short_name, key: :value
-  attribute :name, key: :text
+  attribute :capitalized_name, key: :text
   attribute :distribution_parameters, key: :parameters
 
   def distribution_parameters
@@ -18,4 +17,7 @@ class DistributionMethodSerializer < ActiveModel::Serializer
     parameters[:distribution_parameters]
   end
 
+  def capitalized_name
+    object.name.capitalize
+  end
 end
