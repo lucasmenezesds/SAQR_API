@@ -136,35 +136,6 @@ ALTER SEQUENCE public.cities_id_seq OWNED BY public.cities.id;
 
 
 --
--- Name: transportation_times; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.transportation_times (
-    id bigint NOT NULL,
-    duration_time integer,
-    event boolean,
-    transportation_date timestamp without time zone,
-    origin_city_id bigint,
-    destination_city_id bigint,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    start_time timestamp without time zone,
-    distance integer
-);
-
-
---
--- Name: cities_list; Type: VIEW; Schema: public; Owner: -
---
-
-CREATE VIEW public.cities_list AS
- SELECT (ROW(transportation_times.origin_city_id, transportation_times.destination_city_id))::character varying AS "row",
-    count(*) AS count
-   FROM public.transportation_times
-  GROUP BY transportation_times.origin_city_id, transportation_times.destination_city_id;
-
-
---
 -- Name: deliveries; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -510,6 +481,24 @@ CREATE SEQUENCE public.storage_times_id_seq
 --
 
 ALTER SEQUENCE public.storage_times_id_seq OWNED BY public.storage_times.id;
+
+
+--
+-- Name: transportation_times; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.transportation_times (
+    id bigint NOT NULL,
+    duration_time integer,
+    event boolean,
+    transportation_date timestamp without time zone,
+    origin_city_id bigint,
+    destination_city_id bigint,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    start_time timestamp without time zone,
+    distance integer
+);
 
 
 --

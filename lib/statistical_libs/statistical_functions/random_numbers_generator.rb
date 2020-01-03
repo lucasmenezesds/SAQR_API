@@ -6,17 +6,17 @@ require 'securerandom'
 # Module to Generate Number based on a distribution
 module RandomNumbersGenerator
   def self.random_number
-    SecureRandom.random_number(999_999_999_999)
+    SecureRandom.random_number(999_999_999_999_999)
   end
 
   def self.random_generator(distribution_name, distribution_parameters)
     random_generator = Numo::GSL::Rng::Rand.new(random_number)
 
     case distribution_name
-    when 'exponential'
+    when 'exp'
       random_generator.exponential(distribution_parameters[:mu])
       # data = random_generator.exponential(distribution_parameters[:mu], distribution_parameters[:shape]) if distribution_parameters[:shape]
-    when 'lognormal'
+    when 'lognorm'
       random_generator.lognormal(distribution_parameters[:zeta], distribution_parameters[:sigma])
       # data = random_generator.lognormal(distribution_parameters[:zeta], distribution_parameters[:sigma], distribution_parameters[:shape])
     when 'gamma'
