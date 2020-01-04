@@ -8,7 +8,7 @@ describe RandomNumbersGenerator do
     describe '#distribution_based_generation' do
       it 'should return the expected result' do
         allow_any_instance_of(Numo::GSL::Rng).to receive(:exponential).and_return(1)
-        result = RandomNumbersGenerator.distribution_based_generation(5, 'exponential', mu: 1)
+        result = RandomNumbersGenerator.distribution_based_generation(5, 'exp', mu: 1)
 
         expect(result).to eql([1, 1, 1, 1, 1])
       end
@@ -18,7 +18,7 @@ describe RandomNumbersGenerator do
       describe '#random_generator' do
         it 'should return the expected result' do
           allow_any_instance_of(Numo::GSL::Rng).to receive(:exponential).and_return(10)
-          result = RandomNumbersGenerator.random_generator('exponential', mu: 1)
+          result = RandomNumbersGenerator.random_generator('exp', mu: 1)
 
           expect(result).to eql(10)
         end
@@ -29,7 +29,7 @@ describe RandomNumbersGenerator do
       describe '#random_generator' do
         it 'should return the expected result' do
           allow_any_instance_of(Numo::GSL::Rng).to receive(:lognormal).and_return(2020)
-          result = RandomNumbersGenerator.random_generator('lognormal', zeta: 2.5, sigma: 5)
+          result = RandomNumbersGenerator.random_generator('lognorm', zeta: 2.5, sigma: 5)
 
           expect(result).to eql(2020)
         end

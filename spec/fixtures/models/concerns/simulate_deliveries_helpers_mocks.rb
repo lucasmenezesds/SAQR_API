@@ -6,7 +6,7 @@ def steps_list
     {
       delivery_step: 'picking_time',
       distribution_method: {
-        name: 'exponential',
+        name: 'exp',
         parameters: [
           {
             name: 'mu',

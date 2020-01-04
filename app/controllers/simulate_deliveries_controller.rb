@@ -63,7 +63,7 @@ class SimulateDeliveriesController < ApplicationController
   # Only allow a trusted parameter "white list" through.
   def simulate_delivery_params
     params.require(:data).permit(:number_of_simulations, :number_of_samples, :label,
-                                 steps: [:delivery_step, distribution_method: [:name, parameters: %i[name value uppercase]]]).tap do |inner_params|
+                                 steps: [:delivery_step, distribution_method: [:name, parameters: %i[id name value uppercase]]]).tap do |inner_params|
       inner_params.require(:number_of_simulations)
       inner_params.require(:number_of_samples)
       inner_params.require(:steps)
