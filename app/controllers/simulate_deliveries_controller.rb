@@ -6,15 +6,32 @@ class SimulateDeliveriesController < ApplicationController
 
   # GET /simulate_deliveries
   # def index
-  #  @simulate_deliveries = SimulateDelivery.all
+  #  @simulate_deliveries = SimulateDelivery.first
   #
-  #  render json: @simulate_deliveries
+  #  #render json: @simulate_deliveries
   # end
 
-  # GET /simulate_deliveries/1
-  # def show
-  #  render json: @simulate_delivery
-  # end
+  def simulate_deliveries_list
+    @simulate_deliveries = SimulateDelivery.select(:id, :created_at).to_a
+    final_data = []
+
+    if @simulate_deliveries
+      final_data = @simulate_deliveries.map do |current_data|
+        puts current_data
+        { key: current_data.id,
+          value: current_data.id,
+          text: current_data.created_at.getlocal.to_s[0..-10] }
+      end
+
+    end
+
+    render json: { data: final_data }
+  end
+
+  # GET /simulate_deliveries/ 1
+  def show
+    render json: @simulate_delivery
+  end
 
   # POST /simulate_deliveries
   def create
@@ -30,6 +47,7 @@ class SimulateDeliveriesController < ApplicationController
     simulation_data[:number_of_samples] = number_of_samples
     simulation_data[:number_of_simulations] = number_of_simulations
 
+    # TODO: add data field validation before adding to the DB
     @simulate_delivery = SimulateDelivery.new(steps: steps, simulation_data: simulation_data, label: label)
 
     if @simulate_delivery.save
