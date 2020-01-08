@@ -12,7 +12,7 @@ class SimulateDeliveriesController < ApplicationController
   # end
 
   def simulate_deliveries_list
-    @simulate_deliveries = SimulateDelivery.select(:id, :created_at).to_a
+    @simulate_deliveries = SimulateDelivery.select(:id, :created_at).limit(25).reverse_order.to_a
     final_data = []
 
     if @simulate_deliveries
