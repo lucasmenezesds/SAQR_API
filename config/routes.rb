@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   resources :trucks
   resources :drivers
   resources :simulate_deliveries, only: [:create, :show]
+  resources :bell_chart_data, only: [:create]
   get 'simulate_deliveries_list',  to: 'simulate_deliveries#simulate_deliveries_list'
 end
