@@ -31,7 +31,7 @@ class BellChartDataController < ApplicationController
                                                                               alpha_value)
 
     final_payload['zones'] = zones
-    final_payload['mean-intervals'] = mean_intervals
+    final_payload['mean_intervals'] = mean_intervals
 
     if @bell_chart_data
       render json: { data: final_payload }, status: :created, location: @bell_chart_data, adapter: :attributes
@@ -49,7 +49,7 @@ class BellChartDataController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def bell_chart_datum_params
-    params.require(:data).permit('simulation-id', 'interval-option',
+    params.require(:data).permit('simulation-id', 'interval-option', 'alpha-value',
                                  "interval-option": [:option, values: %i[from to]])
   end
 end
