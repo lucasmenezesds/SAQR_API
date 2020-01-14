@@ -32,7 +32,7 @@ module RandomNumbersGenerator
       raise NoMethodError, "The #{distribution_name} method does not exist"
     end
 
-    raise TypeError, "The number generated for #{distribution_name} was Null, check your parameters value" unless final_val.nil?
+    raise TypeError, "The number generated for #{distribution_name} was Null, check your parameters value" if final_val.nil?
 
     final_val
   end
