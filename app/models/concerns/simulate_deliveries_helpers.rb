@@ -35,7 +35,7 @@ module SimulateDeliveriesHelpers
       parameters_to_rng = {}
 
       distribution_parameters.each do |param|
-        parameters_to_rng[param[:name].to_sym] = param[:value]
+        parameters_to_rng[param[:name].to_sym] = param[:value].to_f
       end
 
       steps_mean = []

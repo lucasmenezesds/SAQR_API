@@ -4,13 +4,6 @@
 class SimulateDeliveriesController < ApplicationController
   before_action :set_simulate_delivery, only: %i[show update destroy]
 
-  # GET /simulate_deliveries
-  # def index
-  #  @simulate_deliveries = SimulateDelivery.first
-  #
-  #  #render json: @simulate_deliveries
-  # end
-
   def simulate_deliveries_list
     @simulate_deliveries = SimulateDelivery.select(:id, :created_at).limit(25).reverse_order.to_a
     final_data = []
@@ -38,8 +31,8 @@ class SimulateDeliveriesController < ApplicationController
     simulation_params = simulate_delivery_params
     steps = simulation_params.fetch(:steps)
 
-    number_of_samples = simulation_params.fetch(:number_of_samples)
-    number_of_simulations = simulation_params.fetch(:number_of_simulations)
+    number_of_samples = simulation_params.fetch(:number_of_samples).to_i
+    number_of_simulations = simulation_params.fetch(:number_of_simulations).to_i
     label = simulation_params.fetch(:label, nil)
 
     simulations_mean = SimulateDeliveriesHelpers.calculate_mean_for_steps(number_of_simulations, number_of_samples, steps)
@@ -56,15 +49,6 @@ class SimulateDeliveriesController < ApplicationController
       render json: @simulate_delivery.errors, status: :unprocessable_entity
     end
   end
-
-  # PATCH/PUT /simulate_deliveries/1
-  # def update
-  #  if @simulate_delivery.update(simulate_delivery_params)
-  #    render json: @simulate_delivery
-  #  else
-  #    render json: @simulate_delivery.errors, status: :unprocessable_entity
-  #  end
-  # end
 
   # DELETE /simulate_deliveries/1
   # def destroy

@@ -15,27 +15,26 @@ module RandomNumbersGenerator
     case distribution_name
     when 'exp'
       mu = distribution_parameters[:mu].to_f
-      random_generator.exponential(mu)
-      # data = random_generator.exponential(distribution_parameters[:mu], distribution_parameters[:shape]) if distribution_parameters[:shape]
+      final_val = random_generator.exponential(mu)
     when 'lognorm'
       zeta = distribution_parameters[:zeta].to_f
       sigma = distribution_parameters[:sigma].to_f
-      random_generator.lognormal(zeta, sigma)
-      # data = random_generator.lognormal(distribution_parameters[:zeta], distribution_parameters[:sigma], distribution_parameters[:shape])
+      final_val = random_generator.lognormal(zeta, sigma)
     when 'gamma'
       alpha = distribution_parameters[:alpha].to_f
       beta = distribution_parameters[:beta].to_f
-      random_generator.gamma(alpha, beta)
-      # data = random_generator.gamma(distribution_parameters[:alpha], distribution_parameters[:beta], distribution_parameters[:shape])
+      final_val = random_generator.gamma(alpha, beta)
     when 'weibull'
       alpha = distribution_parameters[:alpha].to_f
       beta = distribution_parameters[:beta].to_f
-      random_generator.weibull(alpha, beta)
-      # data = random_generator.weibull(distribution_parameters[:alpha], distribution_parameters[:beta], distribution_parameters[:shape])
-
+      final_val = random_generator.weibull(alpha, beta)
     else
       raise NoMethodError, "The #{distribution_name} method does not exist"
     end
+
+    raise TypeError, "The number generated for #{distribution_name} was Null, check your parameters value" unless final_val.nil?
+
+    final_val
   end
 
   def self.distribution_based_generation(number_of_samples, distribution_name, distribution_parameters)
